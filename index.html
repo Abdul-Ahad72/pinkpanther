@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120c14">
+<meta name="description" content="Authentic Himalayan Pink Salt of Pakistan. Mined from the ancient Khewra Salt Mines. Manufacturers, processors, and bulk exporters of culinary pink salt, cooking slabs, handcrafted lamps, and spa crystals.">
+<title>Himalayan Pink Salt of Pakistan | Ancient Khewra Origins & Global Export</title>
+
+<!-- Modern Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0d0a10;
+  --bg-card: rgba(26, 18, 30, 0.7);
+  --bg-card-hover: rgba(38, 26, 44, 0.85);
+  --border: rgba(244, 114, 182, 0.15);
+  --border-strong: rgba(244, 114, 182, 0.35);
+  
+  --rose-light: #fbcfe8;
+  --rose-mid: #f472b6;
+  --rose-deep: #e11d48;
+  --crystal-amber: #fbbf24;
+  --salt-white: #fff5f8;
+  --text-muted: #a89bb0;
+  
+  --gradient-salt: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #be123c 100%);
+  --gradient-glow: radial-gradient(circle at 50% 0%, rgba(244, 114, 182, 0.18) 0%, transparent 70%);
+  --gradient-gold: linear-gradient(135deg, #fde68a, #d97706);
+  
+  --shadow-salt: 0 10px 30px -10px rgba(225, 29, 72, 0.35);
+  --shadow-card: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--salt-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(1000px 500px at 80% -10%, rgba(244, 114, 182, 0.12), transparent 70%),
+    radial-gradient(800px 500px at 10% 20%, rgba(251, 191, 36, 0.06), transparent 60%),
+    radial-gradient(1200px 700px at 50% 80%, rgba(225, 29, 72, 0.08), transparent 70%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, .serif-font {
+  font-family: 'Playfair Display', serif;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* NAVBAR */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(13, 10, 16, 0.85);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--salt-white);
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gradient-salt);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: 0 4px 18px rgba(225, 29, 72, 0.4);
+}
+
+.brand-text h1 {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: var(--rose-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--rose-light);
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--gradient-salt);
+  color: #fff;
+  box-shadow: var(--shadow-salt);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* HERO SECTION */
+.hero {
+  padding: 90px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+.origin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  background: rgba(244, 114, 182, 0.1);
+  border: 1px solid var(--border-strong);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose-mid);
+  margin-bottom: 20px;
+}
+
+.hero h2 {
+  font-size: 46px;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  font-weight: 800;
+}
+
+.hero h2 span {
+  background: linear-gradient(135deg, #fbcfe8, #f472b6, #fb7185);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+@media (max-width: 900px) {
+  .hero p {
+    margin: 0 auto 32px;
+  }
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--gradient-salt);
+  color: #fff;
+  box-shadow: var(--shadow-salt);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px -8px rgba(225, 29, 72, 0.5);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--salt-white);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: rgba(244, 114, 182, 0.12);
+  border-color: var(--rose-mid);
+}
+
+/* HERO STATS BAR */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 50px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  .stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.stat-item b {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--rose-light);
+  line-height: 1.1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.stat-item span {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* HERO VISUAL BOX */
+.crystal-showcase {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(38, 20, 36, 0.8), rgba(20, 12, 24, 0.9));
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-card);
+  padding: 30px;
+  text-align: center;
+}
+
+.crystal-art {
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 40%, rgba(244, 114, 182, 0.35), rgba(225, 29, 72, 0.15) 50%, transparent 75%);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.crystal-art-svg {
+  filter: drop-shadow(0 0 40px rgba(244, 114, 182, 0.6));
+  animation: floatCrystal 4s ease-in-out infinite;
+}
+
+@keyframes floatCrystal {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+.crystal-badge-float {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13, 10, 16, 0.85);
+  border: 1px solid var(--border-strong);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rose-light);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* SECTION TITLES */
+.section {
+  padding: 80px 0;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 50px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--rose-mid);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+/* PROCESS SECTION: HOW PINK SALT IS MADE */
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .process-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px 24px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rose-mid);
+  background: var(--bg-card-hover);
+}
+
+.step-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--rose-mid);
+  background: rgba(244, 114, 182, 0.1);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.process-icon {
+  font-size: 38px;
+  margin-bottom: 16px;
+}
+
+.process-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--salt-white);
+  font-weight: 700;
+}
+
+.process-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.process-features {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--rose-light);
+}
+
+/* ORIGIN SECTION: KHEWRA SALT MINES */
+.khewra-banner {
+  background: linear-gradient(135deg, rgba(35, 18, 32, 0.9), rgba(20, 10, 22, 0.95));
+  border: 1px solid var(--border-strong);
+  border-radius: 28px;
+  padding: 48px 40px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.khewra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .khewra-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+}
+
+.khewra-content h3 {
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: var(--rose-light);
+}
+
+.khewra-content p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.mine-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mine-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mine-point span {
+  color: var(--crystal-amber);
+}
+
+/* PRODUCTS CATALOG */
+.catalog-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.catalog-tab-btn {
+  padding: 10px 20px;
+  border-radius: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.catalog-tab-btn.active, .catalog-tab-btn:hover {
+  background: var(--gradient-salt);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(225, 29, 72, 0.35);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 950px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rose-mid);
+  box-shadow: var(--shadow-card);
+}
+
+.product-thumb {
+  height: 200px;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.25), rgba(13, 10, 16, 0.95));
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.product-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(13, 10, 16, 0.85);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rose-mid);
+}
+
+.product-body {
+  padding: 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-body h4 {
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: var(--salt-white);
+}
+
+.product-body p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.product-specs {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.product-specs span b {
+  color: var(--rose-light);
+}
+
+.product-action-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(244, 114, 182, 0.12);
+  border: 1px solid var(--border-strong);
+  color: var(--rose-light);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-action-btn:hover {
+  background: var(--gradient-salt);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* COMPARISON TABLE: PINK SALT VS WHITE TABLE SALT */
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+th {
+  background: rgba(20, 12, 22, 0.95);
+  font-weight: 800;
+  color: var(--rose-light);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+tr:hover td {
+  background: rgba(244, 114, 182, 0.04);
+}
+
+.tag-good {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.tag-bad {
+  color: #f87171;
+  font-weight: 700;
+}
+
+/* EXPORT INQUIRY / RFQ CALCULATOR */
+.rfq-box {
+  background: linear-gradient(145deg, rgba(30, 18, 34, 0.9), rgba(16, 10, 20, 0.95));
+  border: 1px solid var(--border-strong);
+  border-radius: 28px;
+  padding: 44px;
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 768px) {
+  .rfq-box {
+    padding: 24px;
+  }
+}
+
+.rfq-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+}
+
+@media (max-width: 850px) {
+  .rfq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose-light);
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: rgba(13, 10, 16, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--salt-white);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--rose-mid);
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.15);
+}
+
+.rfq-summary-card {
+  background: rgba(13, 10, 16, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rfq-summary-card h4 {
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: var(--rose-light);
+}
+
+.rfq-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.rfq-line b {
+  color: var(--salt-white);
+}
+
+/* CERTIFICATIONS STRIP */
+.certs-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.cert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose-light);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+  background: #0a070c;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 850px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-col h5 {
+  color: var(--salt-white);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: var(--rose-mid);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+}
+
+/* NOTIFICATION TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--gradient-salt);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-salt);
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 9999;
+  display: none;
+  animation: slideToast 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideToast {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================
+     NAVBAR
+========================== -->
+<header>
+  <div class="container">
+    <div class="nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-icon">🧂</div>
+        <div class="brand-text">
+          <h1>Khewra Crystals</h1>
+          <span>Authentic Pink Salt of Pakistan</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#process">How It's Made</a>
+        <a href="#origin">Khewra Origin</a>
+        <a href="#products">Products</a>
+        <a href="#benefits">84 Minerals</a>
+        <a href="#export">Export RFQ</a>
+      </nav>
+
+      <a href="#export" class="nav-btn">
+        <span>📦 Bulk Export Inquiry</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- =========================
+     HERO SECTION
+========================== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="origin-badge">
+          <span>🇵🇰</span> 100% Sourced from Khewra, Salt Range, Pakistan
+        </div>
+        <h2>
+          The Ancient Pink Salt of <span>Pakistan</span>
+        </h2>
+        <p>
+          Formed 800 million years ago from prehistoric seabed evaporated by volcanic energy. Unrefined, hand-harvested, and enriched with 84 essential ionic minerals. Directly supplied to global culinary, spa, and wellness brands.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#process" class="btn btn-primary">
+            <span>⚙️ Explore Mining Process</span>
+          </a>
+          <a href="#products" class="btn btn-outline">
+            <span>🧂 View Product Catalog</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="crystal-showcase">
+        <div class="crystal-art">
+          <!-- Stylized SVG Crystal Cluster -->
+          <svg class="crystal-art-svg" width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="100,20 150,70 135,160 65,160 50,70" fill="url(#crystalGrad1)" opacity="0.9"/>
+            <polygon points="100,20 65,160 100,180" fill="url(#crystalGrad2)" opacity="0.75"/>
+            <polygon points="100,20 150,70 100,180" fill="url(#crystalGrad3)" opacity="0.85"/>
+            <polygon points="40,90 70,50 90,140 45,150" fill="url(#crystalGrad1)" opacity="0.7"/>
+            <polygon points="160,90 130,50 110,140 155,150" fill="url(#crystalGrad2)" opacity="0.8"/>
+            <defs>
+              <linearGradient id="crystalGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fbcfe8"/>
+                <stop offset="50%" stop-color="#f472b6"/>
+                <stop offset="100%" stop-color="#be123c"/>
+              </linearGradient>
+              <linearGradient id="crystalGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#e11d48"/>
+                <stop offset="100%" stop-color="#fda4af"/>
+              </linearGradient>
+              <linearGradient id="crystalGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#881337"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="crystal-badge-float">
+            <span>✨ Pure Sodium Chloride (98.2%) + 84 Trace Minerals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <b>800M+</b>
+        <span>Years of Geological Purity</span>
+      </div>
+      <div class="stat-item">
+        <b>84+</b>
+        <span>Natural Trace Minerals</span>
+      </div>
+      <div class="stat-item">
+        <b>#2</b>
+        <span>Largest Salt Reserve on Earth</span>
+      </div>
+      <div class="stat-item">
+        <b>50+</b>
+        <span>Export Destination Countries</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     HOW IT IS MADE (PROCESS)
+========================== -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Manufacturing & Processing</span>
+      <h2 class="section-title">How Himalayan Pink Salt is Made in Pakistan</h2>
+      <p class="section-desc">
+        Unlike chemically processed white salt, authentic Pakistani pink salt is produced using traditional artisanal extraction and sterile food-grade mechanical milling.
+      </p>
+    </div>
+
+    <div class="process-timeline">
+      <!-- STEP 1 -->
+      <div class="process-card">
+        <span class="step-num">Step 01</span>
+        <div class="process-icon">⛏️</div>
+        <h3>Traditional Mining & Extraction</h3>
+        <p>
+          Extracted deep inside the subterranean tunnels of Khewra using the historic 'Room and Pillar' architectural method to ensure zero ecological collapse. Hand-selected without explosive chemical contamination.
+        </p>
+        <div class="process-features">
+          <span>✓ Hand-chiseled boulder blocks</span>
+          <span>✓ Zero explosive chemicals</span>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="process-card">
+        <span class="step-num">Step 02</span>
+        <div class="process-icon">🔍</div>
+        <h3>Optical & Manual Color Grading</h3>
+        <p>
+          Raw salt rocks are transported to processing units and sorted into distinct grades: Light Rose Pink, Medium Translucent Pink, and Deep Ruby Red depending on the natural iron & trace mineral concentration.
+        </p>
+        <div class="process-features">
+          <span>✓ 3 Color Grade separations</span>
+          <span>✓ Optical contaminant screening</span>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="process-card">
+        <span class="step-num">Step 03</span>
+        <div class="process-icon">💧</div>
+        <h3>High-Pressure Wash & Sun Drying</h3>
+        <p>
+          Selected crystal boulders undergo high-pressure purified brine washing to remove surface rock dust, followed by natural sun and hot-air desiccation tunnels to preserve mineral potency without bleaching.
+        </p>
+        <div class="process-features">
+          <span>✓ Pure brine washing system</span>
+          <span>✓ 100% Chemical-free drying</span>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="process-card">
+        <span class="step-num">Step 04</span>
+        <div class="process-icon">⚙️</div>
+        <h3>Stainless Steel Milling & Sieving</h3>
+        <p>
+          Crushed in surgical-grade SS-316 stainless steel hammer mills to prevent metal residue. Precision vibratory screens classify granules into exact international mesh sizes: Fine, Medium, Coarse, and Chunks.
+        </p>
+        <div class="process-features">
+          <span>✓ 0.2mm to 6.0mm granulometry</span>
+          <span>✓ Rare-earth magnetic metal separators</span>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="process-card">
+        <span class="step-num">Step 05</span>
+        <div class="process-icon">🪓</div>
+        <h3>Master Artisan Carving</h3>
+        <p>
+          For non-edible lines (Salt Lamps, Cooking Slabs, and Sauna Bricks), skilled Punjabi craftsmen hand-carve solid crystal boulders using diamond-tipped saws and custom lathe machines into geometric shapes.
+        </p>
+        <div class="process-features">
+          <span>✓ Hand-carved Natural Lamps</span>
+          <span>✓ Polished 8"x8" Gourmet Cooking Blocks</span>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="process-card">
+        <span class="step-num">Step 06</span>
+        <div class="process-icon">📦</div>
+        <h3>HACCP Packaging & Global Export</h3>
+        <p>
+          Packed under strict ISO 22000 cleanroom standards. Available in bulk 25kg/50kg woven PP bags, 1-ton jumbo tote bags, or custom private-label retail glass grinders and stand-up pouches for overseas retail chains.
+        </p>
+        <div class="process-features">
+          <span>✓ Moisture-barrier hermetic seals</span>
+          <span>✓ Worldwide shipping via Karachi Port</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KHEWRA SALT MINES ORIGIN BANNER -->
+    <div id="origin" class="khewra-banner">
+      <div class="khewra-grid">
+        <div class="khewra-content">
+          <span class="section-tag" style="color:var(--crystal-amber);">Geological Heritage</span>
+          <h3>The Khewra Salt Mines, Pakistan</h3>
+          <p>
+            Located in Jhelum District, Punjab, Pakistan, Khewra is the world's second-largest salt mine. Discovered by Alexander the Great's army in 326 BC when horses were noticed licking the crystalline rocks, Khewra contains an estimated 600 million tons of pure fossil sea salt.
+          </p>
+          <div class="mine-points">
+            <div class="mine-point"><span>📍</span> Location: Jhelum, Punjab, PK</div>
+            <div class="mine-point"><span>⛰️</span> Altitude: 288 meters</div>
+            <div class="mine-point"><span>💎</span> Reserve: 600M+ Metric Tons</div>
+            <div class="mine-point"><span>🛡️</span> Protected by Pakistan GI Tag</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.4);border-radius:20px;padding:24px;border:1px solid var(--border);">
+          <h4 style="font-size:18px;margin-bottom:12px;color:var(--rose-light);">Official Geographical Indication (GI)</h4>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+            In 2021, the Government of Pakistan officially registered <b>Himalayan Pink Salt</b> under Geographical Indication (GI) laws to curb counterfeit claims and preserve the national heritage of Pakistani miners.
+          </p>
+          <div class="origin-badge" style="background:rgba(52, 211, 153, 0.1);color:#34d399;border-color:rgba(52, 211, 153, 0.3);">
+            ✓ Certified 100% Origin of Pakistan
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     PRODUCT CATALOG
+========================== -->
+<section id="products" class="section" style="background:rgba(0,0,0,0.2);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Product Lines</span>
+      <h2 class="section-title">Himalayan Salt Products We Manufacture</h2>
+      <p class="section-desc">
+        Supplied in bulk containers and private-label retail ready packaging.
+      </p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="catalog-tabs">
+      <button class="catalog-tab-btn active" data-category="all">All Products</button>
+      <button class="catalog-tab-btn" data-category="edible">Edible Gourmet Salt</button>
+      <button class="catalog-tab-btn" data-category="culinary">Cooking & Grilling Slabs</button>
+      <button class="catalog-tab-btn" data-category="lamps">Hand-Carved Lamps</button>
+      <button class="catalog-tab-btn" data-category="wellness">Bath & Spa Crystals</button>
+      <button class="catalog-tab-btn" data-category="animal">Animal Lick Blocks</button>
+    </div>
+
+    <!-- PRODUCTS GRID -->
+    <div class="products-grid" id="productGrid">
+      <!-- PRODUCT 1 -->
+      <div class="product-card" data-cat="edible">
+        <div class="product-thumb">
+          🧂
+          <span class="product-badge">Culinary Grade</span>
+        </div>
+        <div class="product-body">
+          <h4>Fine Table Pink Salt (0.2–0.8mm)</h4>
+          <p>Micro-milled pure pink salt crystals for everyday culinary seasoning, baking, and seasoning blends.</p>
+          <div class="product-specs">
+            <span>Mesh: <b>Fine 0.5mm</b></span>
+            <span>Packaging: <b>25kg / Jars</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Fine Table Pink Salt')">Add to RFQ Quote</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card" data-cat="edible">
+        <div class="product-thumb">
+          ✨
+          <span class="product-badge">Grinder Ready</span>
+        </div>
+        <div class="product-body">
+          <h4>Coarse Pink Salt Crystals (2–5mm)</h4>
+          <p>Translucent gemstone-like granules tailored for refillable ceramic salt grinders and mills.</p>
+          <div class="product-specs">
+            <span>Grain: <b>Coarse 3mm</b></span>
+            <span>Packaging: <b>50kg / Pouches</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Coarse Pink Salt Crystals')">Add to RFQ Quote</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card" data-cat="culinary">
+        <div class="product-thumb">
+          🥩
+          <span class="product-badge">Chef Series</span>
+        </div>
+        <div class="product-body">
+          <h4>Pink Salt Grilling & Cooking Slabs</h4>
+          <p>Cut from solid rock crystal blocks. Heat up to 450°F to grill steaks, seafood, and vegetables with natural flavor infusion.</p>
+          <div class="product-specs">
+            <span>Dimensions: <b>8x8x2 inches</b></span>
+            <span>Packaging: <b>Custom Boxes</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Cooking & Grilling Slabs')">Add to RFQ Quote</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card" data-cat="lamps">
+        <div class="product-thumb">
+          💡
+          <span class="product-badge">Wellness Decor</span>
+        </div>
+        <div class="product-body">
+          <h4>Natural Handcrafted Salt Lamps</h4>
+          <p>Hand-chiseled Himalayan crystal lamps with rosewood bases, emitting warm negative ions and ambient amber illumination.</p>
+          <div class="product-specs">
+            <span>Weight: <b>2kg to 15kg</b></span>
+            <span>Fitting: <b>UL/CE Certified</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Natural Salt Lamps')">Add to RFQ Quote</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 5 -->
+      <div class="product-card" data-cat="wellness">
+        <div class="product-thumb">
+          🛁
+          <span class="product-badge">Spa Detox</span>
+        </div>
+        <div class="product-body">
+          <h4>Himalayan Bath & Therapy Salts</h4>
+          <p>Raw bath chunks and fine bath salts for balneotherapy, halotherapy, skin detoxifying, and foot soaks.</p>
+          <div class="product-specs">
+            <span>Purity: <b>100% Natural</b></span>
+            <span>Packaging: <b>Pails / Drums</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Bath & Spa Salts')">Add to RFQ Quote</button>
+        </div>
+      </div>
+
+      <!-- PRODUCT 6 -->
+      <div class="product-card" data-cat="animal">
+        <div class="product-thumb">
+          🐎
+          <span class="product-badge">Equine & Cattle</span>
+        </div>
+        <div class="product-body">
+          <h4>Organic Animal Lick Salt with Rope</h4>
+          <p>Weather-resistant solid crystal blocks drilled with hemp hanging ropes for horses, cows, and livestock mineral nutrition.</p>
+          <div class="product-specs">
+            <span>Weight: <b>3kg to 5kg Block</b></span>
+            <span>Packaging: <b>Shrink Wrap</b></span>
+          </div>
+          <button class="product-action-btn" onclick="selectProductForRFQ('Animal Lick Salt')">Add to RFQ Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     84 MINERALS COMPARISON
+========================== -->
+<section id="benefits" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Biochemical Profile</span>
+      <h2 class="section-title">Pakistani Pink Salt vs Standard White Table Salt</h2>
+      <p class="section-desc">
+        Why master chefs, naturopaths, and food scientists prefer unrefined Khewra pink salt over stripped commercial salt.
+      </p>
+    </div>
+
+    <div class="comparison-card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Factor</th>
+              <th>Himalayan Pink Salt (Khewra, PK)</th>
+              <th>Standard Refined Table Salt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Extraction & Processing</b></td>
+              <td class="tag-good">100% Natural Mechanical Mining (No Chemicals)</td>
+              <td class="tag-bad">Chemical Leaching & Heavy Industrial Stripping</td>
+            </tr>
+            <tr>
+              <td><b>Mineral Composition</b></td>
+              <td class="tag-good">84+ Ionic Minerals (Iron, Calcium, Magnesium, Zinc)</td>
+              <td class="tag-bad">99.9% Sodium Chloride (Minerals Stripped)</td>
+            </tr>
+            <tr>
+              <td><b>Anti-Caking Additives</b></td>
+              <td class="tag-good">None (Zero chemical additives or E-numbers)</td>
+              <td class="tag-bad">Contains Sodium Ferrocyanide / Silica additives</td>
+            </tr>
+            <tr>
+              <td><b>Natural Color</b></td>
+              <td class="tag-good">Natural Rose-Pink (Trace Iron Oxide minerals)</td>
+              <td class="tag-bad">Artificially Bleached with chlorine</td>
+            </tr>
+            <tr>
+              <td><b>pH & Electrolyte Balance</b></td>
+              <td class="tag-good">Alkalizing cellular hydration profile</td>
+              <td class="tag-bad">Acidifying physiological load</td>
+            </tr>
+            <tr>
+              <td><b>Microplastics</b></td>
+              <td class="tag-good">100% Free (Pre-dates ocean plastic pollution)</td>
+              <td class="tag-bad">Sea salts often contain modern microplastics</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div style="margin-top:40px;text-align:center;">
+      <span class="section-tag">Quality & Export Compliance</span>
+      <div class="certs-grid">
+        <div class="cert-pill">🛡️ ISO 9001:2015 Certified</div>
+        <div class="cert-pill">🍃 ISO 22000 Food Safety</div>
+        <div class="cert-pill">🔬 HACCP Verified</div>
+        <div class="cert-pill">☪️ Halal Certified</div>
+        <div class="cert-pill">✡️ Kosher Certified</div>
+        <div class="cert-pill">🇺🇸 US FDA Registered Facility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     EXPORT INQUIRY / RFQ
+========================== -->
+<section id="export" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">B2B Wholesale & Worldwide Shipping</span>
+      <h2 class="section-title">Request an Export Quote (RFQ)</h2>
+      <p class="section-desc">
+        Direct factory pricing from Khewra & Karachi processing facilities. LCL & FCL container shipments worldwide.
+      </p>
+    </div>
+
+    <div class="rfq-box">
+      <div class="rfq-grid">
+        <!-- FORM -->
+        <div>
+          <div class="form-group">
+            <label>Selected Product Line</label>
+            <select id="rfqProduct">
+              <option value="Fine Table Pink Salt (0.2–0.8mm)">Fine Table Pink Salt (0.2–0.8mm)</option>
+              <option value="Coarse Pink Salt (2–5mm)">Coarse Pink Salt (2–5mm)</option>
+              <option value="Pink Salt Cooking & Grilling Slabs">Pink Salt Cooking & Grilling Slabs</option>
+              <option value="Natural Handcrafted Salt Lamps">Natural Handcrafted Salt Lamps</option>
+              <option value="Himalayan Bath & Spa Salts">Himalayan Bath & Spa Salts</option>
+              <option value="Animal Lick Salt with Rope">Animal Lick Salt with Rope</option>
+              <option value="Custom Mixed Container (FCL)">Custom Mixed Container (FCL)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Order Volume / Quantity</label>
+            <select id="rfqVolume">
+              <option value="20ft Container (approx. 24–27 Metric Tons)">20ft FCL Container (~25 Metric Tons)</option>
+              <option value="40ft Container (approx. 28 Metric Tons)">40ft FCL Container (~28 Metric Tons)</option>
+              <option value="LCL Pallet (1 to 5 Metric Tons)">LCL Pallet Batch (1 to 5 MT)</option>
+              <option value="Sample Evaluation Pack">Sample Evaluation Pack (Air Freight)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Packaging Specification</label>
+            <select id="rfqPackaging">
+              <option value="Bulk 25kg PP Woven Bags (with inner liner)">Bulk 25kg PP Woven Bags (Food Grade)</option>
+              <option value="Bulk 50kg PP Woven Bags">Bulk 50kg PP Woven Bags</option>
+              <option value="1 Metric Ton Jumbo Tote Bags">1-Ton Big Jumbo Bags</option>
+              <option value="Private Label Retail Glass Grinders">Private Label OEM Glass Grinders (100g–250g)</option>
+              <option value="Stand-up Kraft Pouches with Window">Stand-up Kraft Zipper Pouches (500g–1kg)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Name & Company Name</label>
+            <input id="rfqName" type="text" placeholder="e.g. John Doe - Gourmet Imports Ltd">
+          </div>
+
+          <div class="form-group">
+            <label>Destination Port & Country</label>
+            <input id="rfqDestination" type="text" placeholder="e.g. Port of Rotterdam (Netherlands) or Long Beach (USA)">
+          </div>
+
+          <div class="form-group">
+            <label>Special Instructions / Target Delivery Timeline</label>
+            <textarea id="rfqNotes" rows="2" placeholder="e.g. Need private label branding, CIF price quote, or certified lab assay."></textarea>
+          </div>
+        </div>
+
+        <!-- LIVE SUMMARY & SUBMIT -->
+        <div class="rfq-summary-card">
+          <div>
+            <h4>📋 Export RFQ Summary</h4>
+            <div class="rfq-line"><span>Product:</span> <b id="sumProduct">Fine Table Pink Salt</b></div>
+            <div class="rfq-line"><span>Volume:</span> <b id="sumVolume">20ft FCL Container</b></div>
+            <div class="rfq-line"><span>Packaging:</span> <b id="sumPackaging">Bulk 25kg Bags</b></div>
+            <div class="rfq-line"><span>Port:</span> <b id="sumPort">Direct Quote</b></div>
+            <div class="rfq-line"><span>Incoterms:</span> <b>FOB Karachi / CIF World</b></div>
+          </div>
+
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn btn-primary" onclick="submitRFQWhatsApp()">
+              <span>📲 Send via WhatsApp (+92)</span>
+            </button>
+            <button class="btn btn-outline" onclick="copyRFQText()">
+              <span>📋 Copy RFQ Specification</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:16px;">
+          <div class="brand-icon">🧂</div>
+          <div class="brand-text">
+            <h1 style="font-size:18px;">Khewra Crystals</h1>
+            <span>Pakistan Pink Salt Heritage</span>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">
+          Authentic processors, artisans, and bulk exporters of 100% natural Himalayan pink salt originating from the Khewra Salt Mines, Punjab, Pakistan. Serving global retail, pharmaceutical, and culinary distributors.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#process">How It's Made</a></li>
+          <li><a href="#origin">Khewra Salt Mines</a></li>
+          <li><a href="#products">Product Catalog</a></li>
+          <li><a href="#benefits">84 Trace Minerals</a></li>
+          <li><a href="#export">Export Quotation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Product Categories</h5>
+        <ul>
+          <li><a href="#products">Fine & Coarse Edible Salt</a></li>
+          <li><a href="#products">Gourmet Grilling Blocks</a></li>
+          <li><a href="#products">Authentic Salt Lamps</a></li>
+          <li><a href="#products">Sauna Bricks & Tiles</a></li>
+          <li><a href="#products">Agricultural Animal Licks</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Export Inquiries</h5>
+        <p style="font-size:13px;margin-bottom:8px;"><b>Factory:</b> Khewra, Jhelum, Punjab, Pakistan</p>
+        <p style="font-size:13px;margin-bottom:8px;"><b>Export Port:</b> Port Qasim / Karachi Port</p>
+        <p style="font-size:13px;margin-bottom:8px;"><b>Phone/WhatsApp:</b> +92 300 1234567</p>
+        <p style="font-size:13px;"><b>Email:</b> exports@khewracrystals.pk</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Khewra Crystals Pakistan. All Rights Reserved.</div>
+      <div>100% Authentic Geological Salt Range Origin • Pakistan GI Tag Certified</div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" class="toast">RFQ Copied to Clipboard!</div>
+
+<script>
+// FILTER PRODUCTS
+const tabBtns = document.querySelectorAll('.catalog-tab-btn');
+const productCards = document.querySelectorAll('.product-card');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const cat = btn.dataset.category;
+    productCards.forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// RFQ DYNAMIC SUMMARY
+const pSelect = document.getElementById('rfqProduct');
+const vSelect = document.getElementById('rfqVolume');
+const pkgSelect = document.getElementById('rfqPackaging');
+const destInput = document.getElementById('rfqDestination');
+
+function updateRFQSummary() {
+  document.getElementById('sumProduct').textContent = pSelect.value.split('(')[0].trim();
+  document.getElementById('sumVolume').textContent = vSelect.value.split('(')[0].trim();
+  document.getElementById('sumPackaging').textContent = pkgSelect.value.split('(')[0].trim();
+  document.getElementById('sumPort').textContent = destInput.value.trim() || 'Port Specified in RFQ';
+}
+
+[pSelect, vSelect, pkgSelect, destInput].forEach(el => {
+  el.addEventListener('change', updateRFQSummary);
+  el.addEventListener('input', updateRFQSummary);
+});
+
+function selectProductForRFQ(prodName) {
+  for (let option of pSelect.options) {
+    if (option.value.includes(prodName)) {
+      pSelect.value = option.value;
+      break;
+    }
+  }
+  updateRFQSummary();
+  document.getElementById('export').scrollIntoView({ behavior: 'smooth' });
+}
+
+function generateRFQMessage() {
+  const prod = pSelect.value;
+  const vol = vSelect.value;
+  const pkg = pkgSelect.value;
+  const name = document.getElementById('rfqName').value.trim() || 'Valued Buyer';
+  const dest = destInput.value.trim() || 'International Destination Port';
+  const notes = document.getElementById('rfqNotes').value.trim() || 'Standard commercial export inquiry';
+
+  return `🇵🇰 *Himalayan Pink Salt Export Inquiry (Khewra, Pakistan)*\n\n` +
+         `👤 *Buyer / Company:* ${name}\n` +
+         `🧂 *Product:* ${prod}\n` +
+         `📦 *Volume:* ${vol}\n` +
+         `💼 *Packaging:* ${pkg}\n` +
+         `🚢 *Target Port:* ${dest}\n` +
+         `📝 *Notes:* ${notes}\n\n` +
+         `_Inquiry generated via Khewra Crystals Portal_`;
+}
+
+function submitRFQWhatsApp() {
+  const msg = encodeURIComponent(generateRFQMessage());
+  window.open(`https://api.whatsapp.com/send?phone=923001234567&text=${msg}`, '_blank');
+}
+
+function copyRFQText() {
+  const text = generateRFQMessage();
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 2500);
+  });
+}
+</script>
+</body>
+</html>
