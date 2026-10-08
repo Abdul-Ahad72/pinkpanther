@@ -15,10 +15,10 @@
 <style>
 :root {
   --bg: #0d0a10;
-  --bg-card: rgba(26, 18, 30, 0.7);
-  --bg-card-hover: rgba(38, 26, 44, 0.85);
-  --border: rgba(244, 114, 182, 0.15);
-  --border-strong: rgba(244, 114, 182, 0.35);
+  --bg-card: rgba(26, 18, 30, 0.72);
+  --bg-card-hover: rgba(38, 26, 44, 0.9);
+  --border: rgba(244, 114, 182, 0.16);
+  --border-strong: rgba(244, 114, 182, 0.38);
   
   --rose-light: #fbcfe8;
   --rose-mid: #f472b6;
@@ -30,9 +30,10 @@
   --gradient-salt: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #be123c 100%);
   --gradient-glow: radial-gradient(circle at 50% 0%, rgba(244, 114, 182, 0.18) 0%, transparent 70%);
   --gradient-gold: linear-gradient(135deg, #fde68a, #d97706);
+  --gradient-emerald: linear-gradient(135deg, #34d399, #059669);
   
   --shadow-salt: 0 10px 30px -10px rgba(225, 29, 72, 0.35);
-  --shadow-card: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 15px 35px -5px rgba(0, 0, 0, 0.65);
 }
 
 * {
@@ -65,7 +66,7 @@ h1, h2, h3, h4, .serif-font {
 
 /* CONTAINER */
 .container {
-  max-width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -75,9 +76,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(13, 10, 16, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(13, 10, 16, 0.88);
   border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
 }
@@ -86,7 +87,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 76px;
+  height: 78px;
 }
 
 .brand {
@@ -127,7 +128,7 @@ header {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-links a {
@@ -142,8 +143,14 @@ header {
   color: var(--rose-light);
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav-btn {
-  padding: 10px 20px;
+  padding: 9px 18px;
   border-radius: 30px;
   font-size: 13px;
   font-weight: 700;
@@ -154,7 +161,9 @@ header {
   transition: transform 0.15s ease, opacity 0.15s ease;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
 }
 
 .nav-btn:hover {
@@ -162,21 +171,128 @@ header {
   opacity: 0.95;
 }
 
+.nav-pill {
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--salt-white);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.nav-pill:hover {
+  background: rgba(244, 114, 182, 0.15);
+  border-color: var(--rose-mid);
+}
+
+.currency-select {
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--rose-light);
+  cursor: pointer;
+  outline: none;
+}
+
+/* USER DROPDOWN IN HEADER */
+.user-menu-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.user-badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 8px;
+  border-radius: 30px;
+  background: rgba(244, 114, 182, 0.12);
+  border: 1px solid var(--rose-mid);
+  color: var(--rose-light);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.user-avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gradient-salt);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 230px;
+  background: #190f1e;
+  border: 1px solid var(--border-strong);
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  display: none;
+  z-index: 1100;
+  animation: modalIn 0.15s ease-out;
+}
+
+.user-dropdown-menu.active {
+  display: block;
+}
+
+.user-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--salt-white);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  width: 100%;
+  border: none;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.user-menu-item:hover {
+  background: rgba(244, 114, 182, 0.15);
+  color: var(--rose-light);
+}
+
 /* HERO SECTION */
 .hero {
-  padding: 90px 0 70px;
+  padding: 80px 0 60px;
   position: relative;
   overflow: hidden;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 50px;
   align-items: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -203,7 +319,7 @@ header {
 .hero h2 {
   font-size: 46px;
   line-height: 1.15;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   font-weight: 800;
 }
 
@@ -216,38 +332,38 @@ header {
 .hero p {
   font-size: 17px;
   color: var(--text-muted);
-  margin-bottom: 32px;
-  max-width: 540px;
+  margin-bottom: 30px;
+  max-width: 550px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .hero p {
-    margin: 0 auto 32px;
+    margin: 0 auto 30px;
   }
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .hero-actions {
     justify-content: center;
   }
 }
 
 .btn {
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: 14px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
@@ -276,12 +392,28 @@ header {
   border-color: var(--rose-mid);
 }
 
-/* HERO STATS BAR */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--salt-white);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-emerald {
+  background: var(--gradient-emerald);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+}
+
+/* STATS STRIP */
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-top: 50px;
+  margin-top: 45px;
   padding: 24px 28px;
   border-radius: 20px;
   background: var(--bg-card);
@@ -292,7 +424,7 @@ header {
 @media (max-width: 768px) {
   .stats-strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
 }
 
@@ -327,7 +459,7 @@ header {
 
 .crystal-art {
   width: 100%;
-  height: 320px;
+  height: 310px;
   border-radius: 20px;
   background: radial-gradient(circle at 50% 40%, rgba(244, 114, 182, 0.35), rgba(225, 29, 72, 0.15) 50%, transparent 75%);
   display: grid;
@@ -350,7 +482,7 @@ header {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(13, 10, 16, 0.85);
+  background: rgba(13, 10, 16, 0.88);
   border: 1px solid var(--border-strong);
   padding: 8px 18px;
   border-radius: 30px;
@@ -364,15 +496,15 @@ header {
   white-space: nowrap;
 }
 
-/* SECTION TITLES */
+/* SECTIONS */
 .section {
-  padding: 80px 0;
+  padding: 75px 0;
 }
 
 .section-head {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 50px;
+  margin: 0 auto 46px;
 }
 
 .section-tag {
@@ -382,13 +514,13 @@ header {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--rose-mid);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .section-title {
   font-size: 38px;
   line-height: 1.2;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-weight: 800;
 }
 
@@ -397,7 +529,7 @@ header {
   color: var(--text-muted);
 }
 
-/* PROCESS SECTION: HOW PINK SALT IS MADE */
+/* PROCESS TIMELINE */
 .process-timeline {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -413,21 +545,21 @@ header {
 .process-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 32px 24px;
+  border-radius: 22px;
+  padding: 30px 22px;
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   position: relative;
   overflow: hidden;
 }
 
 .process-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--rose-mid);
   background: var(--bg-card-hover);
 }
 
 .step-num {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   color: var(--rose-mid);
   background: rgba(244, 114, 182, 0.1);
@@ -435,54 +567,52 @@ header {
   padding: 4px 12px;
   border-radius: 20px;
   display: inline-block;
-  margin-bottom: 18px;
-}
-
-.process-icon {
-  font-size: 38px;
   margin-bottom: 16px;
 }
 
+.process-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
 .process-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 19px;
+  margin-bottom: 8px;
   color: var(--salt-white);
   font-weight: 700;
 }
 
 .process-card p {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
 .process-features {
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px dashed var(--border);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   font-size: 12px;
   font-weight: 600;
   color: var(--rose-light);
 }
 
-/* ORIGIN SECTION: KHEWRA SALT MINES */
+/* KHEWRA BANNER */
 .khewra-banner {
   background: linear-gradient(135deg, rgba(35, 18, 32, 0.9), rgba(20, 10, 22, 0.95));
   border: 1px solid var(--border-strong);
-  border-radius: 28px;
-  padding: 48px 40px;
-  margin-top: 20px;
-  position: relative;
-  overflow: hidden;
+  border-radius: 26px;
+  padding: 44px 38px;
+  margin-top: 36px;
 }
 
 .khewra-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
   align-items: center;
 }
 
@@ -494,28 +624,28 @@ header {
 }
 
 .khewra-content h3 {
-  font-size: 32px;
-  margin-bottom: 16px;
+  font-size: 30px;
+  margin-bottom: 14px;
   color: var(--rose-light);
 }
 
 .khewra-content p {
   color: var(--text-muted);
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 18px;
 }
 
 .mine-points {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 
 .mine-point {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -527,18 +657,18 @@ header {
 .catalog-tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 36px;
+  gap: 8px;
+  margin-bottom: 34px;
   flex-wrap: wrap;
 }
 
 .catalog-tab-btn {
-  padding: 10px 20px;
-  border-radius: 24px;
+  padding: 9px 18px;
+  border-radius: 22px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -586,20 +716,20 @@ header {
 }
 
 .product-thumb {
-  height: 200px;
+  height: 190px;
   background: radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.25), rgba(13, 10, 16, 0.95));
   display: grid;
   place-items: center;
-  font-size: 64px;
+  font-size: 60px;
   border-bottom: 1px solid var(--border);
   position: relative;
 }
 
 .product-badge {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(13, 10, 16, 0.85);
+  top: 12px;
+  right: 12px;
+  background: rgba(13, 10, 16, 0.88);
   border: 1px solid var(--border);
   padding: 4px 10px;
   border-radius: 20px;
@@ -608,16 +738,29 @@ header {
   color: var(--rose-mid);
 }
 
+.product-price-pill {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(225, 29, 72, 0.85);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+}
+
 .product-body {
-  padding: 22px;
+  padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .product-body h4 {
-  font-size: 19px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 6px;
   color: var(--salt-white);
 }
 
@@ -625,18 +768,18 @@ header {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   flex: 1;
 }
 
 .product-specs {
   display: flex;
   justify-content: space-between;
-  padding: 10px 12px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
   font-size: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -644,30 +787,56 @@ header {
   color: var(--rose-light);
 }
 
-.product-action-btn {
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(244, 114, 182, 0.12);
+.product-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.product-order-btn {
+  padding: 9px;
+  border-radius: 10px;
+  background: var(--gradient-salt);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.product-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+}
+
+.product-rfq-btn {
+  padding: 9px;
+  border-radius: 10px;
+  background: rgba(244, 114, 182, 0.1);
   border: 1px solid var(--border-strong);
   color: var(--rose-light);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
 }
 
-.product-action-btn:hover {
-  background: var(--gradient-salt);
-  color: #fff;
-  border-color: transparent;
+.product-rfq-btn:hover {
+  background: rgba(244, 114, 182, 0.2);
+  border-color: var(--rose-mid);
 }
 
-/* COMPARISON TABLE: PINK SALT VS WHITE TABLE SALT */
+/* COMPARISON TABLE */
 .comparison-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
 }
@@ -684,9 +853,9 @@ table {
 }
 
 th, td {
-  padding: 18px 24px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 th {
@@ -694,7 +863,7 @@ th {
   font-weight: 800;
   color: var(--rose-light);
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.05em;
 }
 
@@ -712,25 +881,25 @@ tr:hover td {
   font-weight: 700;
 }
 
-/* EXPORT INQUIRY / RFQ CALCULATOR */
+/* RFQ BOX */
 .rfq-box {
   background: linear-gradient(145deg, rgba(30, 18, 34, 0.9), rgba(16, 10, 20, 0.95));
   border: 1px solid var(--border-strong);
-  border-radius: 28px;
-  padding: 44px;
+  border-radius: 26px;
+  padding: 40px;
   box-shadow: var(--shadow-card);
 }
 
 @media (max-width: 768px) {
   .rfq-box {
-    padding: 24px;
+    padding: 22px;
   }
 }
 
 .rfq-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 36px;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 32px;
 }
 
 @media (max-width: 850px) {
@@ -740,7 +909,7 @@ tr:hover td {
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .form-group label {
@@ -748,15 +917,15 @@ tr:hover td {
   font-size: 13px;
   font-weight: 700;
   color: var(--rose-light);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 input, select, textarea {
   width: 100%;
-  background: rgba(13, 10, 16, 0.8);
+  background: rgba(13, 10, 16, 0.85);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 11px 14px;
   color: var(--salt-white);
   font-size: 14px;
   font-family: inherit;
@@ -770,10 +939,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .rfq-summary-card {
-  background: rgba(13, 10, 16, 0.85);
+  background: rgba(13, 10, 16, 0.88);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -781,14 +950,14 @@ input:focus, select:focus, textarea:focus {
 
 .rfq-summary-card h4 {
   font-size: 18px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   color: var(--rose-light);
 }
 
 .rfq-line {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-size: 13px;
   color: var(--text-muted);
 }
@@ -797,27 +966,290 @@ input:focus, select:focus, textarea:focus {
   color: var(--salt-white);
 }
 
-/* CERTIFICATIONS STRIP */
+/* CERTIFICATIONS */
 .certs-grid {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .cert-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
+  gap: 8px;
+  padding: 8px 18px;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--rose-light);
+}
+
+/* MODALS */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: grid;
+  place-items: center;
+  z-index: 2000;
+  padding: 18px;
+}
+
+.modal.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: #140d18;
+  border: 1px solid var(--border-strong);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  width: min(880px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  animation: modalIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+
+.close-btn {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: var(--rose-light);
+}
+
+/* AUTH MODAL TABS */
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 22px;
+}
+
+.auth-tab-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.auth-tab-btn.active {
+  color: var(--rose-light);
+  border-bottom-color: var(--rose-mid);
+}
+
+.auth-demo-badge {
+  font-size: 11px;
+  background: rgba(244, 114, 182, 0.15);
+  border: 1px solid var(--border);
+  color: var(--rose-light);
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* ADMIN TABS */
+.admin-nav-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-nav-tab {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.admin-nav-tab.active {
+  color: var(--rose-light);
+  border-bottom-color: var(--rose-mid);
+}
+
+.admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .admin-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.admin-metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+}
+
+.admin-metric-card small {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.admin-metric-card b {
+  font-size: 22px;
+  color: var(--rose-light);
+}
+
+/* BADGES */
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+}
+.status-badge.pending, .status-badge.new { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+.status-badge.confirmed, .status-badge.in_review { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.status-badge.in_production { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.status-badge.shipped, .status-badge.quoted { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.status-badge.delivered, .status-badge.deal_won { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+.status-badge.cancelled, .status-badge.archived { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+/* ORDER TRACKING TIMELINE */
+.tracking-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 30px 10px 20px;
+}
+
+.tracking-steps::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.tracking-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+}
+
+.step-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1e1324;
+  border: 2px solid var(--border-strong);
+  margin: 0 auto 8px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.tracking-step.done .step-circle {
+  background: var(--gradient-salt);
+  border-color: var(--rose-mid);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(225, 29, 72, 0.5);
+}
+
+.tracking-step.current .step-circle {
+  background: var(--crystal-amber);
+  border-color: #fff;
+  color: #000;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.tracking-step.done .step-label {
+  color: var(--rose-light);
+}
+
+.tracking-step.current .step-label {
+  color: var(--crystal-amber);
+}
+
+/* DATABASE STATUS STRIP IN FOOTER / HEADER */
+.db-indicator-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  font-size: 11px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 /* FOOTER */
@@ -884,7 +1316,7 @@ footer {
   font-size: 13px;
 }
 
-/* NOTIFICATION TOAST */
+/* TOAST */
 .toast {
   position: fixed;
   bottom: 24px;
@@ -926,14 +1358,70 @@ footer {
       <nav class="nav-links">
         <a href="#process">How It's Made</a>
         <a href="#origin">Khewra Origin</a>
-        <a href="#products">Products</a>
+        <a href="#products">Product Catalog</a>
         <a href="#benefits">84 Minerals</a>
         <a href="#export">Export RFQ</a>
       </nav>
 
-      <a href="#export" class="nav-btn">
-        <span>📦 Bulk Export Inquiry</span>
-      </a>
+      <div class="nav-actions">
+        <!-- CURRENCY SWITCHER -->
+        <select id="currencySelector" class="currency-select" title="Change Currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="PKR">PKR (₨)</option>
+        </select>
+
+        <!-- TRACK ORDER -->
+        <button onclick="openTrackOrderModal()" class="nav-pill" title="Track an existing Order or RFQ">
+          <span>📍</span>
+          <span>Track Order</span>
+        </button>
+
+        <!-- CUSTOMER AUTH (LOGGED OUT STATE) -->
+        <div id="authLoggedOutNav">
+          <button onclick="openAuthModal('login')" class="nav-pill" style="border-color:var(--rose-mid);color:var(--rose-light);">
+            <span>👤</span>
+            <span>Customer Login</span>
+          </button>
+        </div>
+
+        <!-- CUSTOMER AUTH (LOGGED IN STATE) -->
+        <div id="authLoggedInNav" style="display:none;" class="user-menu-wrap">
+          <button onclick="toggleUserDropdown()" class="user-badge-btn" id="userBadgeBtn">
+            <div class="user-avatar-circle" id="userAvatarText">U</div>
+            <span id="userNameText">Customer</span>
+            <span style="font-size:10px;">▼</span>
+          </button>
+
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <button class="user-menu-item" onclick="openMyOrdersModal()">
+              <span>📦</span>
+              <span>My Orders & RFQs</span>
+            </button>
+            <button class="user-menu-item" onclick="openProfileModal()">
+              <span>👤</span>
+              <span>Account Profile</span>
+            </button>
+            <hr style="border:none;border-top:1px solid var(--border);margin:6px 0;">
+            <button class="user-menu-item" onclick="customerLogout()" style="color:#f87171;">
+              <span>🚪</span>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ADMIN PORTAL -->
+        <button id="openAdminPortalBtn" class="nav-pill" title="Factory Admin & Database Manager">
+          <span>🔐</span>
+          <span>Admin</span>
+        </button>
+
+        <!-- DIRECT RFQ -->
+        <a href="#export" class="nav-btn">
+          <span>📦 RFQ</span>
+        </a>
+      </div>
     </div>
   </div>
 </header>
@@ -946,22 +1434,32 @@ footer {
     <div class="hero-grid">
       <div>
         <div class="origin-badge">
-          <span>🇵🇰</span> 100% Sourced from Khewra, Salt Range, Pakistan
+          <span>🇵🇰</span> 100% Sourced from Khewra, Salt Range, Pakistan • GI Tag Certified
         </div>
         <h2>
           The Ancient Pink Salt of <span>Pakistan</span>
         </h2>
         <p>
-          Formed 800 million years ago from prehistoric seabed evaporated by volcanic energy. Unrefined, hand-harvested, and enriched with 84 essential ionic minerals. Directly supplied to global culinary, spa, and wellness brands.
+          Formed 800 million years ago from prehistoric ocean evaporated by tectonic energy. Pure, hand-harvested, and enriched with 84 essential ionic minerals. Directly supplied to global culinary, spa, wellness, and bulk commercial brands.
         </p>
 
         <div class="hero-actions">
-          <a href="#process" class="btn btn-primary">
-            <span>⚙️ Explore Mining Process</span>
+          <a href="#products" class="btn btn-primary">
+            <span>🧂 Shop & Order Products</span>
           </a>
-          <a href="#products" class="btn btn-outline">
-            <span>🧂 View Product Catalog</span>
+          <a href="#export" class="btn btn-outline">
+            <span>📦 Wholesale Container RFQ</span>
           </a>
+          <button onclick="openTrackOrderModal()" class="btn btn-secondary">
+            <span>📍 Track Your Order</span>
+          </button>
+        </div>
+
+        <div style="margin-top:20px;display:flex;align-items:center;gap:12px;">
+          <div class="db-indicator-bar">
+            <span class="pulse-dot"></span>
+            <span id="globalDbStatusText">Cloud Database: Online & GitHub Pages Synced</span>
+          </div>
         </div>
       </div>
 
@@ -984,7 +1482,7 @@ footer {
                 <stop offset="0%" stop-color="#e11d48"/>
                 <stop offset="100%" stop-color="#fda4af"/>
               </linearGradient>
-              <linearGradient id="crystalGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient id="crystalGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#f43f5e"/>
                 <stop offset="100%" stop-color="#881337"/>
               </linearGradient>
@@ -992,7 +1490,7 @@ footer {
           </svg>
 
           <div class="crystal-badge-float">
-            <span>✨ Pure Sodium Chloride (98.2%) + 84 Trace Minerals</span>
+            <span>✨ Pure NaCl (98.2%) + 84 Ionic Trace Minerals</span>
           </div>
         </div>
       </div>
@@ -1014,7 +1512,7 @@ footer {
       </div>
       <div class="stat-item">
         <b>50+</b>
-        <span>Export Destination Countries</span>
+        <span>Global Export Nations</span>
       </div>
     </div>
   </div>
@@ -1026,95 +1524,89 @@ footer {
 <section id="process" class="section">
   <div class="container">
     <div class="section-head">
-      <span class="section-tag">Manufacturing & Processing</span>
+      <span class="section-tag">Artisanal & Modern Milling</span>
       <h2 class="section-title">How Himalayan Pink Salt is Made in Pakistan</h2>
       <p class="section-desc">
-        Unlike chemically processed white salt, authentic Pakistani pink salt is produced using traditional artisanal extraction and sterile food-grade mechanical milling.
+        Unlike chemically stripped white table salt, authentic Pakistani pink salt is produced using traditional artisanal extraction and surgical stainless steel milling.
       </p>
     </div>
 
     <div class="process-timeline">
-      <!-- STEP 1 -->
       <div class="process-card">
         <span class="step-num">Step 01</span>
         <div class="process-icon">⛏️</div>
         <h3>Traditional Mining & Extraction</h3>
         <p>
-          Extracted deep inside the subterranean tunnels of Khewra using the historic 'Room and Pillar' architectural method to ensure zero ecological collapse. Hand-selected without explosive chemical contamination.
+          Extracted deep inside subterranean tunnels of Khewra using the historic 'Room and Pillar' method to protect mine stability. Hand-selected without toxic blasting residue.
         </p>
         <div class="process-features">
           <span>✓ Hand-chiseled boulder blocks</span>
-          <span>✓ Zero explosive chemicals</span>
+          <span>✓ Zero explosive contamination</span>
         </div>
       </div>
 
-      <!-- STEP 2 -->
       <div class="process-card">
         <span class="step-num">Step 02</span>
         <div class="process-icon">🔍</div>
         <h3>Optical & Manual Color Grading</h3>
         <p>
-          Raw salt rocks are transported to processing units and sorted into distinct grades: Light Rose Pink, Medium Translucent Pink, and Deep Ruby Red depending on the natural iron & trace mineral concentration.
+          Raw salt rocks are transported to state-of-the-art sorting facilities and separated into Light Rose Pink, Medium Translucent Pink, and Deep Ruby Red crystals based on iron density.
         </p>
         <div class="process-features">
-          <span>✓ 3 Color Grade separations</span>
-          <span>✓ Optical contaminant screening</span>
+          <span>✓ 3 distinct color grade selections</span>
+          <span>✓ Optical laser contaminant screening</span>
         </div>
       </div>
 
-      <!-- STEP 3 -->
       <div class="process-card">
         <span class="step-num">Step 03</span>
         <div class="process-icon">💧</div>
-        <h3>High-Pressure Wash & Sun Drying</h3>
+        <h3>High-Pressure Wash & Solar Desiccation</h3>
         <p>
-          Selected crystal boulders undergo high-pressure purified brine washing to remove surface rock dust, followed by natural sun and hot-air desiccation tunnels to preserve mineral potency without bleaching.
+          Boulders undergo high-pressure purified brine washing to remove surface rock dust, followed by natural sun drying and hot-air desiccation tunnels without bleaching chemicals.
         </p>
         <div class="process-features">
-          <span>✓ Pure brine washing system</span>
-          <span>✓ 100% Chemical-free drying</span>
+          <span>✓ Purified saturated brine rinse</span>
+          <span>✓ 100% Bleach-free drying</span>
         </div>
       </div>
 
-      <!-- STEP 4 -->
       <div class="process-card">
         <span class="step-num">Step 04</span>
         <div class="process-icon">⚙️</div>
-        <h3>Stainless Steel Milling & Sieving</h3>
+        <h3>SS-316 Stainless Steel Milling</h3>
         <p>
-          Crushed in surgical-grade SS-316 stainless steel hammer mills to prevent metal residue. Precision vibratory screens classify granules into exact international mesh sizes: Fine, Medium, Coarse, and Chunks.
+          Crushed in food-grade SS-316 stainless steel hammer mills to prevent metallic wear. Vibratory screens classify granules into exact mesh granulometries (0.2mm to 6mm).
         </p>
         <div class="process-features">
-          <span>✓ 0.2mm to 6.0mm granulometry</span>
-          <span>✓ Rare-earth magnetic metal separators</span>
+          <span>✓ Fine, Coarse, & Extra-Coarse sizing</span>
+          <span>✓ Neodymium magnetic metal traps</span>
         </div>
       </div>
 
-      <!-- STEP 5 -->
       <div class="process-card">
         <span class="step-num">Step 05</span>
         <div class="process-icon">🪓</div>
         <h3>Master Artisan Carving</h3>
         <p>
-          For non-edible lines (Salt Lamps, Cooking Slabs, and Sauna Bricks), skilled Punjabi craftsmen hand-carve solid crystal boulders using diamond-tipped saws and custom lathe machines into geometric shapes.
+          For wellness and culinary slabs (Lamps, Gourmet Cooking Blocks, Sauna Tiles), Punjabi craftsmen hand-carve solid crystal boulders using diamond saws and woodcraft lathe bases.
         </p>
         <div class="process-features">
-          <span>✓ Hand-carved Natural Lamps</span>
-          <span>✓ Polished 8"x8" Gourmet Cooking Blocks</span>
+          <span>✓ Hand-carved Negative Ion Lamps</span>
+          <span>✓ Searing Grilling Blocks (450°F Heat Safe)</span>
         </div>
       </div>
 
-      <!-- STEP 6 -->
       <div class="process-card">
         <span class="step-num">Step 06</span>
         <div class="process-icon">📦</div>
-        <h3>HACCP Packaging & Global Export</h3>
+        <h3>HACCP Packaging & Export Delivery</h3>
         <p>
-          Packed under strict ISO 22000 cleanroom standards. Available in bulk 25kg/50kg woven PP bags, 1-ton jumbo tote bags, or custom private-label retail glass grinders and stand-up pouches for overseas retail chains.
+          Packed under strict ISO 22000 cleanroom protocol into 25kg PP bags, 1-ton bulk tote bags, or custom private-label retail grinders and zipper pouches for worldwide shipment.
         </p>
         <div class="process-features">
-          <span>✓ Moisture-barrier hermetic seals</span>
-          <span>✓ Worldwide shipping via Karachi Port</span>
+          <span>✓ Food-grade hermetic moisture barrier</span>
+          <span>✓ Worldwide dispatch via Port Qasim / Karachi</span>
         </div>
       </div>
     </div>
@@ -1126,23 +1618,23 @@ footer {
           <span class="section-tag" style="color:var(--crystal-amber);">Geological Heritage</span>
           <h3>The Khewra Salt Mines, Pakistan</h3>
           <p>
-            Located in Jhelum District, Punjab, Pakistan, Khewra is the world's second-largest salt mine. Discovered by Alexander the Great's army in 326 BC when horses were noticed licking the crystalline rocks, Khewra contains an estimated 600 million tons of pure fossil sea salt.
+            Located in Jhelum District, Punjab, Pakistan, Khewra is the world's second-largest salt mine. Discovered by Alexander the Great's army in 326 BC when cavalry horses were seen licking the crystalline rocks, Khewra holds over 600 million tons of prehistoric fossil sea salt.
           </p>
           <div class="mine-points">
             <div class="mine-point"><span>📍</span> Location: Jhelum, Punjab, PK</div>
-            <div class="mine-point"><span>⛰️</span> Altitude: 288 meters</div>
+            <div class="mine-point"><span>⛰️</span> Altitude: 288 meters above sea level</div>
             <div class="mine-point"><span>💎</span> Reserve: 600M+ Metric Tons</div>
-            <div class="mine-point"><span>🛡️</span> Protected by Pakistan GI Tag</div>
+            <div class="mine-point"><span>🛡️</span> Protected by Pakistan GI Law</div>
           </div>
         </div>
 
         <div style="background:rgba(0,0,0,0.4);border-radius:20px;padding:24px;border:1px solid var(--border);">
           <h4 style="font-size:18px;margin-bottom:12px;color:var(--rose-light);">Official Geographical Indication (GI)</h4>
           <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
-            In 2021, the Government of Pakistan officially registered <b>Himalayan Pink Salt</b> under Geographical Indication (GI) laws to curb counterfeit claims and preserve the national heritage of Pakistani miners.
+            The Government of Pakistan registered <b>Himalayan Pink Salt</b> under Geographical Indication laws to preserve national origin integrity and verify genuine Khewra supply.
           </p>
           <div class="origin-badge" style="background:rgba(52, 211, 153, 0.1);color:#34d399;border-color:rgba(52, 211, 153, 0.3);">
-            ✓ Certified 100% Origin of Pakistan
+            ✓ Certified 100% Genuine Khewra Origin
           </div>
         </div>
       </div>
@@ -1151,15 +1643,15 @@ footer {
 </section>
 
 <!-- =========================
-     PRODUCT CATALOG
+     PRODUCT CATALOG & ORDERING
 ========================== -->
-<section id="products" class="section" style="background:rgba(0,0,0,0.2);">
+<section id="products" class="section" style="background:rgba(0,0,0,0.22);">
   <div class="container">
     <div class="section-head">
-      <span class="section-tag">Product Lines</span>
+      <span class="section-tag">Direct Factory Supply</span>
       <h2 class="section-title">Himalayan Salt Products We Manufacture</h2>
       <p class="section-desc">
-        Supplied in bulk containers and private-label retail ready packaging.
+        Available for direct retail batches and wholesale bulk container export. Click <b>⚡ Order Now</b> to purchase directly or <b>📋 Bulk RFQ</b> for full container quotations.
       </p>
     </div>
 
@@ -1175,107 +1667,7 @@ footer {
 
     <!-- PRODUCTS GRID -->
     <div class="products-grid" id="productGrid">
-      <!-- PRODUCT 1 -->
-      <div class="product-card" data-cat="edible">
-        <div class="product-thumb">
-          🧂
-          <span class="product-badge">Culinary Grade</span>
-        </div>
-        <div class="product-body">
-          <h4>Fine Table Pink Salt (0.2–0.8mm)</h4>
-          <p>Micro-milled pure pink salt crystals for everyday culinary seasoning, baking, and seasoning blends.</p>
-          <div class="product-specs">
-            <span>Mesh: <b>Fine 0.5mm</b></span>
-            <span>Packaging: <b>25kg / Jars</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Fine Table Pink Salt')">Add to RFQ Quote</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 2 -->
-      <div class="product-card" data-cat="edible">
-        <div class="product-thumb">
-          ✨
-          <span class="product-badge">Grinder Ready</span>
-        </div>
-        <div class="product-body">
-          <h4>Coarse Pink Salt Crystals (2–5mm)</h4>
-          <p>Translucent gemstone-like granules tailored for refillable ceramic salt grinders and mills.</p>
-          <div class="product-specs">
-            <span>Grain: <b>Coarse 3mm</b></span>
-            <span>Packaging: <b>50kg / Pouches</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Coarse Pink Salt Crystals')">Add to RFQ Quote</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 3 -->
-      <div class="product-card" data-cat="culinary">
-        <div class="product-thumb">
-          🥩
-          <span class="product-badge">Chef Series</span>
-        </div>
-        <div class="product-body">
-          <h4>Pink Salt Grilling & Cooking Slabs</h4>
-          <p>Cut from solid rock crystal blocks. Heat up to 450°F to grill steaks, seafood, and vegetables with natural flavor infusion.</p>
-          <div class="product-specs">
-            <span>Dimensions: <b>8x8x2 inches</b></span>
-            <span>Packaging: <b>Custom Boxes</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Cooking & Grilling Slabs')">Add to RFQ Quote</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 4 -->
-      <div class="product-card" data-cat="lamps">
-        <div class="product-thumb">
-          💡
-          <span class="product-badge">Wellness Decor</span>
-        </div>
-        <div class="product-body">
-          <h4>Natural Handcrafted Salt Lamps</h4>
-          <p>Hand-chiseled Himalayan crystal lamps with rosewood bases, emitting warm negative ions and ambient amber illumination.</p>
-          <div class="product-specs">
-            <span>Weight: <b>2kg to 15kg</b></span>
-            <span>Fitting: <b>UL/CE Certified</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Natural Salt Lamps')">Add to RFQ Quote</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 5 -->
-      <div class="product-card" data-cat="wellness">
-        <div class="product-thumb">
-          🛁
-          <span class="product-badge">Spa Detox</span>
-        </div>
-        <div class="product-body">
-          <h4>Himalayan Bath & Therapy Salts</h4>
-          <p>Raw bath chunks and fine bath salts for balneotherapy, halotherapy, skin detoxifying, and foot soaks.</p>
-          <div class="product-specs">
-            <span>Purity: <b>100% Natural</b></span>
-            <span>Packaging: <b>Pails / Drums</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Bath & Spa Salts')">Add to RFQ Quote</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 6 -->
-      <div class="product-card" data-cat="animal">
-        <div class="product-thumb">
-          🐎
-          <span class="product-badge">Equine & Cattle</span>
-        </div>
-        <div class="product-body">
-          <h4>Organic Animal Lick Salt with Rope</h4>
-          <p>Weather-resistant solid crystal blocks drilled with hemp hanging ropes for horses, cows, and livestock mineral nutrition.</p>
-          <div class="product-specs">
-            <span>Weight: <b>3kg to 5kg Block</b></span>
-            <span>Packaging: <b>Shrink Wrap</b></span>
-          </div>
-          <button class="product-action-btn" onclick="selectProductForRFQ('Animal Lick Salt')">Add to RFQ Quote</button>
-        </div>
-      </div>
+      <!-- Dynamically Rendered -->
     </div>
   </div>
 </section>
@@ -1289,7 +1681,7 @@ footer {
       <span class="section-tag">Biochemical Profile</span>
       <h2 class="section-title">Pakistani Pink Salt vs Standard White Table Salt</h2>
       <p class="section-desc">
-        Why master chefs, naturopaths, and food scientists prefer unrefined Khewra pink salt over stripped commercial salt.
+        Why top master chefs, wellness practitioners, and nutritionists choose raw unrefined Khewra pink salt over chemically stripped salt.
       </p>
     </div>
 
@@ -1312,15 +1704,15 @@ footer {
             <tr>
               <td><b>Mineral Composition</b></td>
               <td class="tag-good">84+ Ionic Minerals (Iron, Calcium, Magnesium, Zinc)</td>
-              <td class="tag-bad">99.9% Sodium Chloride (Minerals Stripped)</td>
+              <td class="tag-bad">99.9% Sodium Chloride (Trace Minerals Stripped)</td>
             </tr>
             <tr>
               <td><b>Anti-Caking Additives</b></td>
-              <td class="tag-good">None (Zero chemical additives or E-numbers)</td>
+              <td class="tag-good">None (Zero chemical additives or synthetic agents)</td>
               <td class="tag-bad">Contains Sodium Ferrocyanide / Silica additives</td>
             </tr>
             <tr>
-              <td><b>Natural Color</b></td>
+              <td><b>Natural Color & Purity</b></td>
               <td class="tag-good">Natural Rose-Pink (Trace Iron Oxide minerals)</td>
               <td class="tag-bad">Artificially Bleached with chlorine</td>
             </tr>
@@ -1330,18 +1722,17 @@ footer {
               <td class="tag-bad">Acidifying physiological load</td>
             </tr>
             <tr>
-              <td><b>Microplastics</b></td>
-              <td class="tag-good">100% Free (Pre-dates ocean plastic pollution)</td>
-              <td class="tag-bad">Sea salts often contain modern microplastics</td>
+              <td><b>Microplastics Risk</b></td>
+              <td class="tag-good">100% Plastic Free (Pre-dates modern sea pollution)</td>
+              <td class="tag-bad">Modern sea salts often contain plastic polymers</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- CERTIFICATIONS -->
-    <div style="margin-top:40px;text-align:center;">
-      <span class="section-tag">Quality & Export Compliance</span>
+    <div style="margin-top:36px;text-align:center;">
+      <span class="section-tag">Export Compliance & Certifications</span>
       <div class="certs-grid">
         <div class="cert-pill">🛡️ ISO 9001:2015 Certified</div>
         <div class="cert-pill">🍃 ISO 22000 Food Safety</div>
@@ -1355,7 +1746,7 @@ footer {
 </section>
 
 <!-- =========================
-     EXPORT INQUIRY / RFQ
+     EXPORT INQUIRY / WHOLESALE RFQ
 ========================== -->
 <section id="export" class="section">
   <div class="container">
@@ -1363,23 +1754,23 @@ footer {
       <span class="section-tag">B2B Wholesale & Worldwide Shipping</span>
       <h2 class="section-title">Request an Export Quote (RFQ)</h2>
       <p class="section-desc">
-        Direct factory pricing from Khewra & Karachi processing facilities. LCL & FCL container shipments worldwide.
+        Direct factory export rates from Khewra and Karachi facilities. LCL and FCL container shipments worldwide.
       </p>
     </div>
 
     <div class="rfq-box">
       <div class="rfq-grid">
-        <!-- FORM -->
+        <!-- RFQ FORM -->
         <div>
           <div class="form-group">
             <label>Selected Product Line</label>
             <select id="rfqProduct">
               <option value="Fine Table Pink Salt (0.2–0.8mm)">Fine Table Pink Salt (0.2–0.8mm)</option>
-              <option value="Coarse Pink Salt (2–5mm)">Coarse Pink Salt (2–5mm)</option>
-              <option value="Pink Salt Cooking & Grilling Slabs">Pink Salt Cooking & Grilling Slabs</option>
+              <option value="Coarse Pink Salt Crystals (2–5mm)">Coarse Pink Salt Crystals (2–5mm)</option>
+              <option value="Pink Salt Grilling & Cooking Slabs">Pink Salt Grilling & Cooking Slabs</option>
               <option value="Natural Handcrafted Salt Lamps">Natural Handcrafted Salt Lamps</option>
               <option value="Himalayan Bath & Spa Salts">Himalayan Bath & Spa Salts</option>
-              <option value="Animal Lick Salt with Rope">Animal Lick Salt with Rope</option>
+              <option value="Organic Animal Lick Salt with Rope">Organic Animal Lick Salt with Rope</option>
               <option value="Custom Mixed Container (FCL)">Custom Mixed Container (FCL)</option>
             </select>
           </div>
@@ -1397,31 +1788,48 @@ footer {
           <div class="form-group">
             <label>Packaging Specification</label>
             <select id="rfqPackaging">
-              <option value="Bulk 25kg PP Woven Bags (with inner liner)">Bulk 25kg PP Woven Bags (Food Grade)</option>
+              <option value="Bulk 25kg PP Woven Bags (Food Grade)">Bulk 25kg PP Woven Bags (Food Grade)</option>
               <option value="Bulk 50kg PP Woven Bags">Bulk 50kg PP Woven Bags</option>
               <option value="1 Metric Ton Jumbo Tote Bags">1-Ton Big Jumbo Bags</option>
               <option value="Private Label Retail Glass Grinders">Private Label OEM Glass Grinders (100g–250g)</option>
-              <option value="Stand-up Kraft Pouches with Window">Stand-up Kraft Zipper Pouches (500g–1kg)</option>
+              <option value="Stand-up Kraft Zipper Pouches">Stand-up Kraft Zipper Pouches (500g–1kg)</option>
             </select>
           </div>
 
-          <div class="form-group">
-            <label>Your Name & Company Name</label>
-            <input id="rfqName" type="text" placeholder="e.g. John Doe - Gourmet Imports Ltd">
+          <div class="row" style="display:flex;gap:12px;">
+            <div class="form-group" style="flex:1;">
+              <label>Your Full Name *</label>
+              <input id="rfqName" type="text" placeholder="e.g. Marcus Vance">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label>Company / Importer Name *</label>
+              <input id="rfqCompany" type="text" placeholder="e.g. Nordic Spice Imports">
+            </div>
+          </div>
+
+          <div class="row" style="display:flex;gap:12px;">
+            <div class="form-group" style="flex:1;">
+              <label>Email Address *</label>
+              <input id="rfqEmail" type="email" placeholder="buyer@example.com">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label>Phone / WhatsApp Number</label>
+              <input id="rfqPhone" type="tel" placeholder="+1 555 123 4567">
+            </div>
           </div>
 
           <div class="form-group">
-            <label>Destination Port & Country</label>
+            <label>Destination Port & Country *</label>
             <input id="rfqDestination" type="text" placeholder="e.g. Port of Rotterdam (Netherlands) or Long Beach (USA)">
           </div>
 
           <div class="form-group">
-            <label>Special Instructions / Target Delivery Timeline</label>
-            <textarea id="rfqNotes" rows="2" placeholder="e.g. Need private label branding, CIF price quote, or certified lab assay."></textarea>
+            <label>Special Instructions / Lab Requirements</label>
+            <textarea id="rfqNotes" rows="2" placeholder="e.g. Need certified lab assay, private label printing, or CIF quotation."></textarea>
           </div>
         </div>
 
-        <!-- LIVE SUMMARY & SUBMIT -->
+        <!-- LIVE SUMMARY & SUBMISSION -->
         <div class="rfq-summary-card">
           <div>
             <h4>📋 Export RFQ Summary</h4>
@@ -1430,14 +1838,18 @@ footer {
             <div class="rfq-line"><span>Packaging:</span> <b id="sumPackaging">Bulk 25kg Bags</b></div>
             <div class="rfq-line"><span>Port:</span> <b id="sumPort">Direct Quote</b></div>
             <div class="rfq-line"><span>Incoterms:</span> <b>FOB Karachi / CIF World</b></div>
+            <div class="rfq-line"><span>Database Sync:</span> <b style="color:#34d399;">Active (Real-Time)</b></div>
           </div>
 
-          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
-            <button class="btn btn-primary" onclick="submitRFQWhatsApp()">
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+            <button class="btn btn-primary" id="saveRFQBtn" onclick="submitOfficialRFQ()">
+              <span>💾 Submit Official RFQ to Factory</span>
+            </button>
+            <button class="btn btn-outline" onclick="submitRFQWhatsApp()">
               <span>📲 Send via WhatsApp (+92)</span>
             </button>
-            <button class="btn btn-outline" onclick="copyRFQText()">
-              <span>📋 Copy RFQ Specification</span>
+            <button class="btn btn-secondary" onclick="copyRFQText()">
+              <span>📋 Copy RFQ Text</span>
             </button>
           </div>
         </div>
@@ -1463,6 +1875,12 @@ footer {
         <p style="font-size:13px;color:var(--text-muted);line-height:1.6;">
           Authentic processors, artisans, and bulk exporters of 100% natural Himalayan pink salt originating from the Khewra Salt Mines, Punjab, Pakistan. Serving global retail, pharmaceutical, and culinary distributors.
         </p>
+        <div style="margin-top:14px;">
+          <div class="db-indicator-bar">
+            <span class="pulse-dot"></span>
+            <span id="footerDbIndicator">Database: GitHub Pages Ready & Local Storage Synced</span>
+          </div>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -1473,26 +1891,30 @@ footer {
           <li><a href="#products">Product Catalog</a></li>
           <li><a href="#benefits">84 Trace Minerals</a></li>
           <li><a href="#export">Export Quotation</a></li>
+          <li><a href="javascript:void(0)" onclick="openTrackOrderModal()">Track Order</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h5>Product Categories</h5>
+        <h5>Customer Portal</h5>
         <ul>
-          <li><a href="#products">Fine & Coarse Edible Salt</a></li>
-          <li><a href="#products">Gourmet Grilling Blocks</a></li>
-          <li><a href="#products">Authentic Salt Lamps</a></li>
-          <li><a href="#products">Sauna Bricks & Tiles</a></li>
-          <li><a href="#products">Agricultural Animal Licks</a></li>
+          <li><a href="javascript:void(0)" onclick="openAuthModal('login')">Customer Log In</a></li>
+          <li><a href="javascript:void(0)" onclick="openAuthModal('register')">Create New Account</a></li>
+          <li><a href="javascript:void(0)" onclick="openMyOrdersModal()">My Order History</a></li>
+          <li><a href="javascript:void(0)" onclick="openTrackOrderModal()">Shipment Tracking</a></li>
+          <li><a href="javascript:void(0)" onclick="openAdminModal()">Factory Admin Access</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h5>Export Inquiries</h5>
-        <p style="font-size:13px;margin-bottom:8px;"><b>Factory:</b> Khewra, Jhelum, Punjab, Pakistan</p>
-        <p style="font-size:13px;margin-bottom:8px;"><b>Export Port:</b> Port Qasim / Karachi Port</p>
-        <p style="font-size:13px;margin-bottom:8px;"><b>Phone/WhatsApp:</b> +92 300 1234567</p>
-        <p style="font-size:13px;"><b>Email:</b> exports@khewracrystals.pk</p>
+        <h5>Factory & Export Desk</h5>
+        <p style="font-size:13px;margin-bottom:6px;"><b>Mine Site:</b> Khewra, Jhelum, Punjab, Pakistan</p>
+        <p style="font-size:13px;margin-bottom:6px;"><b>Export Port:</b> Port Qasim / Karachi Port</p>
+        <p style="font-size:13px;margin-bottom:6px;"><b>WhatsApp:</b> +92 300 1234567</p>
+        <p style="font-size:13px;margin-bottom:12px;"><b>Email:</b> exports@khewracrystals.pk</p>
+        <button onclick="openAdminModal()" class="nav-pill">
+          <span>🔐 Factory Portal</span>
+        </button>
       </div>
     </div>
 
@@ -1503,31 +1925,1263 @@ footer {
   </div>
 </footer>
 
-<!-- TOAST -->
-<div id="toast" class="toast">RFQ Copied to Clipboard!</div>
+<!-- =========================================================
+     MODAL: CUSTOMER AUTH (LOGIN & REGISTER)
+========================================================= -->
+<div id="authModal" class="modal hidden">
+  <div class="modal-content" style="max-width:480px;">
+    <div class="modal-header">
+      <h3 style="font-size:22px;color:var(--rose-light);" id="authModalTitle">👤 Customer Portal</h3>
+      <button class="close-btn" onclick="closeAuthModal()">&times;</button>
+    </div>
 
+    <div class="auth-tabs">
+      <button class="auth-tab-btn active" id="tabBtnLogin" onclick="switchAuthTab('login')">Log In</button>
+      <button class="auth-tab-btn" id="tabBtnRegister" onclick="switchAuthTab('register')">Create Account</button>
+    </div>
+
+    <!-- TAB 1: LOGIN FORM -->
+    <div id="authLoginForm">
+      <div style="margin-bottom:16px;">
+        <span style="font-size:12px;color:var(--text-muted);">Quick Demo Login:</span>
+        <button type="button" class="auth-demo-badge" onclick="fillDemoUser('buyer@example.com', '123456')">⚡ Demo Buyer</button>
+        <button type="button" class="auth-demo-badge" onclick="fillDemoUser('chef@bistro.com', '123456')">⚡ Demo Chef</button>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="loginEmail" placeholder="your.email@example.com" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label>Password *</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" autocomplete="current-password">
+      </div>
+
+      <div id="loginError" style="color:#f87171;font-size:13px;font-weight:700;margin-bottom:12px;display:none;"></div>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:6px;" onclick="handleCustomerLogin()">
+        <span>🔐 Log In to Account</span>
+      </button>
+
+      <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px;">
+        Don't have an account yet? <a href="javascript:void(0)" onclick="switchAuthTab('register')" style="color:var(--rose-mid);font-weight:700;">Create one here</a>
+      </p>
+    </div>
+
+    <!-- TAB 2: REGISTER FORM -->
+    <div id="authRegisterForm" style="display:none;">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="regFullName" placeholder="e.g. Alexander Vance">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address (used for login & orders) *</label>
+        <input type="email" id="regEmail" placeholder="e.g. alexander@spiceimports.com">
+      </div>
+
+      <div class="form-group">
+        <label>Password *</label>
+        <input type="password" id="regPassword" placeholder="Minimum 6 characters">
+      </div>
+
+      <div class="row" style="display:flex;gap:10px;">
+        <div class="form-group" style="flex:1;">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="regPhone" placeholder="+1 555 123 4567">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Company / Brand</label>
+          <input type="text" id="regCompany" placeholder="e.g. Vance Organics">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Country & Shipping / Port Address</label>
+        <input type="text" id="regAddress" placeholder="e.g. Rotterdam, Netherlands">
+      </div>
+
+      <div id="regError" style="color:#f87171;font-size:13px;font-weight:700;margin-bottom:12px;display:none;"></div>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:6px;" onclick="handleCustomerRegister()">
+        <span>✨ Create Account & Sign In</span>
+      </button>
+
+      <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px;">
+        Already registered? <a href="javascript:void(0)" onclick="switchAuthTab('login')" style="color:var(--rose-mid);font-weight:700;">Log in here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: PRODUCT QUICK ORDER (CUSTOMER ORDERING)
+========================================================= -->
+<div id="orderModal" class="modal hidden">
+  <div class="modal-content" style="max-width:620px;">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="orderModalIcon" style="font-size:28px;">🧂</span>
+        <div>
+          <h3 style="font-size:20px;color:var(--rose-light);" id="orderModalProdName">Place Product Order</h3>
+          <span style="font-size:12px;color:var(--text-muted);" id="orderModalProdSpec">Standard Packaging</span>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeOrderModal()">&times;</button>
+    </div>
+
+    <!-- ORDER FORM -->
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin-bottom:16px;">
+        <div>
+          <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Unit Base Price</span>
+          <div style="font-size:18px;font-weight:800;color:var(--rose-light);" id="orderModalUnitPrice">$180.00 / MT</div>
+        </div>
+        <div style="text-align:right;">
+          <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Estimated Total</span>
+          <div style="font-size:22px;font-weight:800;color:#34d399;" id="orderModalTotalDisplay">$180.00</div>
+        </div>
+      </div>
+
+      <div class="row" style="display:flex;gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Quantity / Units *</label>
+          <input type="number" id="orderQty" min="1" value="1" oninput="calculateOrderTotal()">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Order Batch Type</label>
+          <select id="orderBatchUnit" onchange="calculateOrderTotal()">
+            <option value="1">1 Metric Ton (Standard Bulk)</option>
+            <option value="5">5 Metric Tons</option>
+            <option value="25">25 Metric Tons (Full 20ft FCL)</option>
+            <option value="0.1">Sample / 100kg Trial</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Packaging Preference</label>
+        <select id="orderPackaging">
+          <option value="Bulk 25kg PP Woven Bags (Food Grade)">Bulk 25kg PP Woven Bags (Food Grade)</option>
+          <option value="Bulk 50kg PP Woven Bags">Bulk 50kg PP Woven Bags</option>
+          <option value="1 Metric Ton Jumbo Tote Bags">1 Metric Ton Jumbo Tote Bags</option>
+          <option value="Retail Private Label Jars / Shakers">Retail Private Label Glass Shakers (150g–250g)</option>
+          <option value="Stand-up Kraft Zipper Pouches">Stand-up Kraft Zipper Pouches (500g–1kg)</option>
+        </select>
+      </div>
+
+      <div class="row" style="display:flex;gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Customer Full Name *</label>
+          <input type="text" id="orderCustomerName" placeholder="e.g. John Doe">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Customer Email *</label>
+          <input type="email" id="orderCustomerEmail" placeholder="john@example.com">
+        </div>
+      </div>
+
+      <div class="row" style="display:flex;gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Phone / WhatsApp Number *</label>
+          <input type="tel" id="orderCustomerPhone" placeholder="+1 555 123 4567">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Delivery City, Country or Port *</label>
+          <input type="text" id="orderCustomerDestination" placeholder="e.g. Hamburg, Germany">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Order Notes / Branding Specifications</label>
+        <textarea id="orderNotes" rows="2" placeholder="e.g. Need private label barcode stickers or urgent dispatch."></textarea>
+      </div>
+
+      <div id="orderError" style="color:#f87171;font-size:13px;font-weight:700;margin-bottom:12px;display:none;"></div>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:6px;" id="submitOrderBtn" onclick="submitCustomerOrder()">
+        <span>💾 Confirm & Place Order into Database</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: ORDER SUCCESS CONFIRMATION
+========================================================= -->
+<div id="orderSuccessModal" class="modal hidden">
+  <div class="modal-content" style="max-width:520px;text-align:center;">
+    <div style="font-size:52px;margin-bottom:10px;">🎉</div>
+    <h3 style="font-size:24px;margin-bottom:8px;color:var(--rose-light);">Order Successfully Placed!</h3>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:18px;">
+      Your order has been registered in the Khewra Crystals Export Database.
+    </p>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px dashed var(--border-strong);padding:16px;border-radius:16px;margin-bottom:20px;">
+      <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Order Tracking Reference</div>
+      <div id="successOrderRef" style="font-size:24px;font-weight:800;color:var(--rose-mid);margin-top:4px;">ORD-PK-2026-0001</div>
+      <div id="successOrderAmount" style="font-size:14px;color:var(--salt-white);margin-top:4px;">Total: $0.00</div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-emerald" onclick="openOrderWhatsApp()">
+        <span>📲 Send via WhatsApp</span>
+      </button>
+      <button class="btn btn-outline" onclick="openMyOrdersModal(); closeOrderSuccessModal();">
+        <span>📦 View My Orders</span>
+      </button>
+      <button class="btn btn-secondary" onclick="closeOrderSuccessModal()">
+        <span>Done</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: CUSTOMER "MY ORDERS & RFQS" DASHBOARD
+========================================================= -->
+<div id="myOrdersModal" class="modal hidden">
+  <div class="modal-content" style="max-width:850px;">
+    <div class="modal-header">
+      <div>
+        <h3 style="font-size:22px;color:var(--rose-light);">📦 My Orders & RFQs</h3>
+        <p style="font-size:12px;color:var(--text-muted);" id="myOrdersCustomerLabel">Orders placed under your account</p>
+      </div>
+      <button class="close-btn" onclick="closeMyOrdersModal()">&times;</button>
+    </div>
+
+    <div class="table-responsive" style="border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,0.3);max-height:440px;overflow-y:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Reference #</th>
+            <th>Type</th>
+            <th>Product & Quantity</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="myOrdersTableBody">
+          <!-- Dynamically filled -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: ORDER TRACKING (PUBLIC)
+========================================================= -->
+<div id="trackOrderModal" class="modal hidden">
+  <div class="modal-content" style="max-width:580px;">
+    <div class="modal-header">
+      <div>
+        <h3 style="font-size:22px;color:var(--rose-light);">📍 Track Order / Shipment</h3>
+        <p style="font-size:12px;color:var(--text-muted);">Enter your Order Ref (ORD-...) or RFQ Ref (RFQ-...)</p>
+      </div>
+      <button class="close-btn" onclick="closeTrackOrderModal()">&times;</button>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-bottom:20px;">
+      <input type="text" id="trackInputRef" placeholder="e.g. ORD-PK-2026-1024 or RFQ-PK-2026-5832" style="font-size:15px;letter-spacing:1px;font-weight:700;">
+      <button class="btn btn-primary" onclick="executeTrackOrder()">Track</button>
+    </div>
+
+    <div id="trackingResultBox" style="display:none;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Reference #</div>
+            <b id="trackRefDisplay" style="font-size:18px;color:var(--rose-mid);">ORD-PK-2026-0000</b>
+          </div>
+          <div>
+            <span id="trackStatusBadge" class="status-badge new">Pending</span>
+          </div>
+        </div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:10px;" id="trackDetailsDisplay">
+          Product Details
+        </div>
+      </div>
+
+      <!-- VISUAL TRACKING TIMELINE -->
+      <div class="tracking-steps">
+        <div class="tracking-step done" id="step1">
+          <div class="step-circle">✓</div>
+          <div class="step-label">Order Received</div>
+        </div>
+        <div class="tracking-step" id="step2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Confirmed</div>
+        </div>
+        <div class="tracking-step" id="step3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Milling & QC</div>
+        </div>
+        <div class="tracking-step" id="step4">
+          <div class="step-circle">4</div>
+          <div class="step-label">Shipped</div>
+        </div>
+        <div class="tracking-step" id="step5">
+          <div class="step-circle">5</div>
+          <div class="step-label">Delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: ACCOUNT PROFILE
+========================================================= -->
+<div id="profileModal" class="modal hidden">
+  <div class="modal-content" style="max-width:480px;">
+    <div class="modal-header">
+      <h3 style="font-size:22px;color:var(--rose-light);">👤 Account Profile</h3>
+      <button class="close-btn" onclick="closeProfileModal()">&times;</button>
+    </div>
+    <div id="profileContent" style="font-size:14px;line-height:1.8;">
+      <!-- Populated via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: RFQ SUBMISSION SUCCESS
+========================================================= -->
+<div id="rfqSuccessModal" class="modal hidden">
+  <div class="modal-content" style="max-width:520px;text-align:center;">
+    <div style="font-size:52px;margin-bottom:10px;">🎉</div>
+    <h3 style="font-size:24px;margin-bottom:8px;color:var(--rose-light);">RFQ Registered in Database!</h3>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:18px;">
+      Your export inquiry has been saved into the Khewra factory export database.
+    </p>
+    <div style="background:rgba(255,255,255,0.04);border:1px dashed var(--border-strong);padding:16px;border-radius:16px;margin-bottom:20px;">
+      <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Inquiry Reference Number</div>
+      <div id="modalRefNo" style="font-size:24px;font-weight:800;color:var(--rose-mid);margin-top:4px;">RFQ-PK-2026-0001</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;">
+      <button class="btn btn-emerald" onclick="openWhatsAppForRef()">
+        <span>📲 Chat on WhatsApp</span>
+      </button>
+      <button class="btn btn-secondary" onclick="closeRFQSuccessModal()">
+        <span>Done</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: ADMIN AUTH PIN
+========================================================= -->
+<div id="adminPinModal" class="modal hidden">
+  <div class="modal-content" style="max-width:380px;text-align:center;">
+    <h3 style="font-size:20px;margin-bottom:6px;">🔐 Factory Admin Login</h3>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+      Default Factory PIN is <b>1234</b>.
+    </p>
+    <div class="form-group">
+      <input id="adminPinInput" type="password" placeholder="Enter PIN" style="text-align:center;font-size:22px;letter-spacing:6px;" autocomplete="off">
+    </div>
+    <div id="adminPinError" style="color:var(--rose-deep);font-size:13px;font-weight:700;margin-bottom:12px;display:none;">
+      Incorrect PIN. Default is 1234.
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" style="flex:1;" onclick="checkAdminPin()">Login</button>
+      <button class="btn btn-secondary" style="flex:1;" onclick="closeAdminPinModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL: ADMIN MASTER PORTAL & DATABASE MANAGER
+========================================================= -->
+<div id="adminPortalModal" class="modal hidden">
+  <div class="modal-content" style="max-width:980px;">
+    <div class="modal-header">
+      <div>
+        <h3 style="font-size:22px;color:var(--rose-light);">🏭 Khewra Factory Lead & Database Manager</h3>
+        <p style="font-size:12px;color:var(--text-muted);">Real-Time Orders, Wholesale RFQs, Customer Accounts, and Cloud Sync</p>
+      </div>
+      <button class="close-btn" onclick="closeAdminPortal()">&times;</button>
+    </div>
+
+    <!-- METRICS -->
+    <div class="admin-metrics">
+      <div class="admin-metric-card">
+        <small>Customer Orders</small>
+        <b id="adminTotalOrders" style="color:#34d399;">0</b>
+      </div>
+      <div class="admin-metric-card">
+        <small>Wholesale RFQs</small>
+        <b id="adminTotalRFQs" style="color:#38bdf8;">0</b>
+      </div>
+      <div class="admin-metric-card">
+        <small>Registered Customers</small>
+        <b id="adminTotalCustomers" style="color:var(--rose-light);">0</b>
+      </div>
+      <div class="admin-metric-card">
+        <small>Deals & Completed</small>
+        <b id="adminTotalCompleted" style="color:#fbbf24;">0</b>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="admin-nav-tabs">
+      <button class="admin-nav-tab active" id="adminTabOrdersBtn" onclick="switchAdminTab('orders')">📦 Customer Orders</button>
+      <button class="admin-nav-tab" id="adminTabRFQsBtn" onclick="switchAdminTab('rfqs')">📋 Wholesale RFQs</button>
+      <button class="admin-nav-tab" id="adminTabCustomersBtn" onclick="switchAdminTab('customers')">👥 Customer Directory</button>
+      <button class="admin-nav-tab" id="adminTabDbBtn" onclick="switchAdminTab('db')">⚙️ Cloud Database Sync</button>
+    </div>
+
+    <!-- VIEW 1: CUSTOMER ORDERS TABLE -->
+    <div id="adminViewOrders">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:13px;color:var(--text-muted);">All Customer Orders</span>
+        <button class="btn btn-outline" style="padding:6px 12px;font-size:12px;" onclick="exportOrdersCSV()">
+          <span>📥 Download Orders CSV</span>
+        </button>
+      </div>
+      <div class="table-responsive" style="border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.3);max-height:380px;overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Order Ref</th>
+              <th>Customer</th>
+              <th>Product & Qty</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminOrdersTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 2: WHOLESALE RFQS TABLE -->
+    <div id="adminViewRFQs" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:13px;color:var(--text-muted);">Wholesale Container Requests</span>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-outline" style="padding:6px 12px;font-size:12px;" onclick="exportInquiriesCSV()">
+            <span>📥 Download RFQ CSV</span>
+          </button>
+          <button class="btn btn-secondary" style="padding:6px 12px;font-size:12px;" onclick="seedSampleInquiry()">
+            <span>➕ Test Lead</span>
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive" style="border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.3);max-height:380px;overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Ref #</th>
+              <th>Buyer / Company</th>
+              <th>Product & Volume</th>
+              <th>Destination Port</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminInquiriesTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 3: CUSTOMER DIRECTORY -->
+    <div id="adminViewCustomers" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:13px;color:var(--text-muted);">Registered Accounts</span>
+        <button class="btn btn-outline" style="padding:6px 12px;font-size:12px;" onclick="exportCustomersCSV()">
+          <span>📥 Download Customers CSV</span>
+        </button>
+      </div>
+      <div class="table-responsive" style="border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.3);max-height:380px;overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Company</th>
+              <th>Country</th>
+              <th>Registered</th>
+            </tr>
+          </thead>
+          <tbody id="adminCustomersTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 4: DATABASE & SYNC MANAGER -->
+    <div id="adminViewDb" style="display:none;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:18px;">
+        <h4 style="font-size:16px;color:var(--rose-light);margin-bottom:8px;">🌐 Online GitHub Pages Database Integration</h4>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">
+          This platform is equipped with hybrid multi-layer database persistence. On GitHub Pages, data is saved directly in browser database storage (LocalStorage / IndexedDB) and can optionally sync to Firebase Realtime Database in real time. If run locally via <code>python server.py</code>, it also saves automatically into SQLite (<code>pink_salt.db</code>).
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div style="background:rgba(0,0,0,0.4);padding:14px;border-radius:12px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Browser Storage (GitHub Pages Native)</div>
+            <div style="font-size:16px;color:#34d399;font-weight:700;margin-top:4px;">✓ Active (Zero Server Required)</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.4);padding:14px;border-radius:12px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Python SQLite Server (Local / VPS)</div>
+            <div style="font-size:16px;font-weight:700;margin-top:4px;" id="adminPyServerStatus">Checking connection...</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Firebase Realtime Database URL (Optional Cloud Sync for GitHub Pages)</label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="firebaseDbUrlInput" placeholder="https://your-firebase-project-default-rtdb.firebaseio.com">
+            <button class="btn btn-outline" onclick="saveCloudDbConfig()">Save & Test</button>
+          </div>
+          <small style="color:var(--text-muted);font-size:11px;margin-top:4px;display:block;">Leave blank to use internal high-performance storage.</small>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="exportFullDatabaseJSON()">
+          <span>💾 Download Full Database Backup (JSON)</span>
+        </button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importDbFileInput').click()">
+          <span>📂 Restore Database from JSON</span>
+        </button>
+        <input type="file" id="importDbFileInput" style="display:none;" accept=".json" onchange="importFullDatabaseJSON(event)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICATION TOAST -->
+<div id="toast" class="toast">Operation completed!</div>
+
+<!-- =========================================================
+     JAVASCRIPT CONTROLLER & DATABASE LAYER
+========================================================= -->
 <script>
-// FILTER PRODUCTS
-const tabBtns = document.querySelectorAll('.catalog-tab-btn');
-const productCards = document.querySelectorAll('.product-card');
+// ==========================================
+// 1. DATABASE REPOSITORY & STORAGE KEYS
+// ==========================================
+const DB_KEY_CUSTOMERS = 'khewra_db_customers';
+const DB_KEY_ORDERS    = 'khewra_db_orders';
+const DB_KEY_INQUIRIES = 'khewra_db_inquiries';
+const DB_KEY_PRODUCTS  = 'khewra_db_products';
+const DB_KEY_AUTH      = 'khewra_active_session';
+const DB_KEY_FIREBASE  = 'khewra_firebase_url';
+const DB_KEY_CURRENCY  = 'khewra_selected_currency';
 
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const cat = btn.dataset.category;
-    productCards.forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
+// DEFAULT CURRENCY CONVERSIONS
+const CURRENCY_RATES = {
+  USD: { symbol: '$', rate: 1.0 },
+  EUR: { symbol: '€', rate: 0.92 },
+  GBP: { symbol: '£', rate: 0.78 },
+  PKR: { symbol: '₨', rate: 278.0 }
+};
+
+let currentCurrency = localStorage.getItem(DB_KEY_CURRENCY) || 'USD';
+
+// DEFAULT PRODUCTS CATALOG
+const DEFAULT_PRODUCTS = [
+  { id: 'prod-001', cat: 'edible', badge: 'Culinary Grade', name: 'Fine Table Pink Salt (0.2–0.8mm)', desc: 'Micro-milled pure pink salt crystals for everyday culinary seasoning, baking, and rubs.', mesh: 'Fine 0.5mm', pkg: '25kg / Jars', icon: '🧂', usd_price_per_mt: 180 },
+  { id: 'prod-002', cat: 'edible', badge: 'Grinder Ready', name: 'Coarse Pink Salt Crystals (2–5mm)', desc: 'Translucent gemstone-like granules tailored for refillable ceramic salt grinders.', mesh: 'Coarse 3mm', pkg: '50kg / Pouches', icon: '✨', usd_price_per_mt: 160 },
+  { id: 'prod-003', cat: 'culinary', badge: 'Chef Series', name: 'Pink Salt Grilling & Cooking Slabs', desc: 'Solid rock crystal blocks. Heat up to 450°F to grill steaks, seafood, and veggies with natural seasoning.', mesh: '8x8x2 inches', pkg: 'Carton Boxes', icon: '🥩', usd_price_per_mt: 450 },
+  { id: 'prod-004', cat: 'lamps', badge: 'Wellness Decor', name: 'Natural Handcrafted Salt Lamps', desc: 'Hand-chiseled Himalayan crystal lamps with rosewood bases, emitting warm negative ions and amber glow.', mesh: '2kg to 15kg', pkg: 'UL/CE Master Box', icon: '💡', usd_price_per_mt: 650 },
+  { id: 'prod-005', cat: 'wellness', badge: 'Spa Detox', name: 'Himalayan Bath & Spa Salts', desc: 'Raw bath chunks and fine bath crystals for balneotherapy, halotherapy, skin detox, and foot baths.', mesh: '100% Natural', pkg: 'Pails / Drums', icon: '🛁', usd_price_per_mt: 210 },
+  { id: 'prod-006', cat: 'animal', badge: 'Equine & Cattle', name: 'Organic Animal Lick Salt with Rope', desc: 'Weather-resistant solid crystal blocks drilled with hemp hanging ropes for horses and cattle nutrition.', mesh: '3kg to 5kg Block', pkg: 'Shrink Wrap', icon: '🐎', usd_price_per_mt: 140 }
+];
+
+// Seed initial demo data in LocalStorage if empty
+function initializeLocalStorageDB() {
+  if (!localStorage.getItem(DB_KEY_CUSTOMERS)) {
+    const demoCustomers = [
+      {
+        customer_id: 'cust-101',
+        full_name: 'Marcus Vance',
+        email: 'buyer@example.com',
+        password_hash: '123456',
+        phone: '+1 555 123 4567',
+        company: 'Nordic Spice Imports',
+        country: 'Sweden',
+        address: 'Port of Gothenburg, Sweden',
+        created_at: new Date().toISOString()
+      },
+      {
+        customer_id: 'cust-102',
+        full_name: 'Elena Rostova',
+        email: 'chef@bistro.com',
+        password_hash: '123456',
+        phone: '+44 20 7946 0912',
+        company: 'Bistro Gourmet Ltd',
+        country: 'United Kingdom',
+        address: 'London, UK',
+        created_at: new Date().toISOString()
       }
+    ];
+    localStorage.setItem(DB_KEY_CUSTOMERS, JSON.stringify(demoCustomers));
+  }
+
+  if (!localStorage.getItem(DB_KEY_ORDERS)) {
+    const demoOrders = [
+      {
+        id: 'ord_' + (Date.now() - 86400000),
+        order_ref: 'ORD-PK-2026-1024',
+        customer_id: 'cust-101',
+        customer_name: 'Marcus Vance',
+        customer_email: 'buyer@example.com',
+        customer_phone: '+1 555 123 4567',
+        product_id: 'prod-001',
+        product_name: 'Fine Table Pink Salt (0.2–0.8mm)',
+        quantity: '5 Metric Tons',
+        packaging: 'Bulk 25kg PP Woven Bags (Food Grade)',
+        unit_price: 180,
+        total_amount: 900,
+        currency: 'USD',
+        destination: 'Port of Gothenburg, Sweden',
+        notes: 'Air freight express evaluation pallet.',
+        status: 'in_production',
+        created_at: new Date(Date.now() - 86400000).toISOString()
+      }
+    ];
+    localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(demoOrders));
+  }
+
+  if (!localStorage.getItem(DB_KEY_INQUIRIES)) {
+    const demoInquiries = [
+      {
+        id: 'inq_' + (Date.now() - 172800000),
+        reference_no: 'RFQ-PK-2026-5832',
+        buyer_name: 'Alexander Vance',
+        company_name: 'EuroSpice Global B.V.',
+        email: 'avance@eurospice.nl',
+        phone_whatsapp: '+31 20 123 4567',
+        product_name: 'Fine Table Pink Salt (0.2–0.8mm)',
+        volume: '20ft Container (approx. 24–27 Metric Tons)',
+        packaging: 'Bulk 25kg PP Woven Bags (Food Grade)',
+        destination_port: 'Port of Rotterdam, Netherlands',
+        special_notes: 'Need official Certificate of Analysis (COA) with shipment.',
+        status: 'quoted',
+        created_at: new Date(Date.now() - 172800000).toISOString()
+      }
+    ];
+    localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(demoInquiries));
+  }
+
+  if (!localStorage.getItem(DB_KEY_PRODUCTS)) {
+    localStorage.setItem(DB_KEY_PRODUCTS, JSON.stringify(DEFAULT_PRODUCTS));
+  }
+}
+
+initializeLocalStorageDB();
+
+// ==========================================
+// 2. DATA ACCESS HELPERS
+// ==========================================
+function getCustomersDB() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_CUSTOMERS)) || []; } catch(e) { return []; }
+}
+function saveCustomerDB(cust) {
+  const all = getCustomersDB();
+  all.unshift(cust);
+  localStorage.setItem(DB_KEY_CUSTOMERS, JSON.stringify(all));
+  syncCloud('customers', cust);
+}
+
+function getOrdersDB() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_ORDERS)) || []; } catch(e) { return []; }
+}
+function saveOrderDB(order) {
+  const all = getOrdersDB();
+  all.unshift(order);
+  localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(all));
+  syncCloud('orders', order);
+}
+function updateOrderStatusDB(orderRef, newStatus) {
+  const all = getOrdersDB();
+  const target = all.find(x => x.order_ref === orderRef || x.id === orderRef);
+  if (target) {
+    target.status = newStatus;
+    localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(all));
+  }
+}
+
+function getInquiriesDB() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_INQUIRIES)) || []; } catch(e) { return []; }
+}
+function saveInquiryDB(inq) {
+  const all = getInquiriesDB();
+  all.unshift(inq);
+  localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(all));
+  syncCloud('inquiries', inq);
+}
+function updateInquiryStatusDB(refNo, newStatus) {
+  const all = getInquiriesDB();
+  const target = all.find(x => x.reference_no === refNo || x.id === refNo);
+  if (target) {
+    target.status = newStatus;
+    localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(all));
+  }
+}
+
+function getProductsDB() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_PRODUCTS)) || DEFAULT_PRODUCTS; } catch(e) { return DEFAULT_PRODUCTS; }
+}
+
+// Background Cloud Sync (Firebase RTDB and/or local Python server)
+async function syncCloud(collection, item) {
+  // 1. Python Local Server sync if running
+  try {
+    const endpoint = collection === 'orders' ? '/api/orders' : (collection === 'customers' ? '/api/auth/register' : '/api/inquiries');
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item)
+    }).catch(() => {});
+  } catch(e) {}
+
+  // 2. Firebase Cloud Realtime Database sync if URL configured
+  const fbUrl = localStorage.getItem(DB_KEY_FIREBASE);
+  if (fbUrl) {
+    try {
+      const cleanUrl = fbUrl.replace(/\/$/, '');
+      fetch(`${cleanUrl}/khewra_${collection}/${item.id || item.order_ref || item.reference_no || Date.now()}.json`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item)
+      }).catch(() => {});
+    } catch(e) {}
+  }
+}
+
+// Check Python server connectivity
+async function checkPythonServer() {
+  const label = document.getElementById('adminPyServerStatus');
+  try {
+    const res = await fetch('/api/health', { signal: AbortSignal.timeout(1500) });
+    if (res.ok) {
+      if (label) label.innerHTML = '<span style="color:#34d399;">✓ Connected (localhost:8080)</span>';
+      document.getElementById('globalDbStatusText').textContent = 'Cloud & Local SQLite Database: Fully Synced';
+      return;
+    }
+  } catch(e) {}
+  if (label) label.innerHTML = '<span style="color:#fbbf24;">Offline (Using Browser Storage)</span>';
+}
+checkPythonServer();
+
+// ==========================================
+// 3. AUTHENTICATION & SESSION MANAGEMENT
+// ==========================================
+let currentCustomer = null;
+
+function getCurrentCustomer() {
+  try {
+    const raw = localStorage.getItem(DB_KEY_AUTH);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function updateAuthUI() {
+  currentCustomer = getCurrentCustomer();
+  const loggedOutNav = document.getElementById('authLoggedOutNav');
+  const loggedInNav  = document.getElementById('authLoggedInNav');
+
+  if (currentCustomer) {
+    loggedOutNav.style.display = 'none';
+    loggedInNav.style.display = 'inline-block';
+    document.getElementById('userNameText').textContent = currentCustomer.full_name || 'Customer';
+    document.getElementById('userAvatarText').textContent = (currentCustomer.full_name || 'U').charAt(0).toUpperCase();
+
+    // Auto-fill RFQ fields
+    if (document.getElementById('rfqName') && !document.getElementById('rfqName').value) {
+      document.getElementById('rfqName').value = currentCustomer.full_name || '';
+      document.getElementById('rfqEmail').value = currentCustomer.email || '';
+      document.getElementById('rfqPhone').value = currentCustomer.phone || '';
+      document.getElementById('rfqCompany').value = currentCustomer.company || '';
+      document.getElementById('rfqDestination').value = currentCustomer.address || '';
+    }
+  } else {
+    loggedOutNav.style.display = 'inline-block';
+    loggedInNav.style.display = 'none';
+  }
+}
+
+function openAuthModal(tab = 'login') {
+  document.getElementById('authModal').classList.remove('hidden');
+  switchAuthTab(tab);
+}
+
+function closeAuthModal() {
+  document.getElementById('authModal').classList.add('hidden');
+  document.getElementById('loginError').style.display = 'none';
+  document.getElementById('regError').style.display = 'none';
+}
+
+function switchAuthTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tabBtnLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabBtnRegister').classList.toggle('active', !isLogin);
+  document.getElementById('authLoginForm').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('authRegisterForm').style.display = isLogin ? 'none' : 'block';
+  document.getElementById('authModalTitle').textContent = isLogin ? '👤 Customer Login' : '✨ Create Customer Account';
+}
+
+function fillDemoUser(email, pwd) {
+  document.getElementById('loginEmail').value = email;
+  document.getElementById('loginPassword').value = pwd;
+}
+
+function handleCustomerLogin() {
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pwd   = document.getElementById('loginPassword').value.trim();
+  const errEl = document.getElementById('loginError');
+
+  if (!email || !pwd) {
+    errEl.textContent = 'Please enter both your email and password.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const customers = getCustomersDB();
+  const match = customers.find(c => c.email.toLowerCase() === email && c.password_hash === pwd);
+
+  if (match) {
+    localStorage.setItem(DB_KEY_AUTH, JSON.stringify(match));
+    closeAuthModal();
+    updateAuthUI();
+    showToast(`Welcome back, ${match.full_name}! 👋`);
+  } else {
+    errEl.textContent = 'Invalid email or password. Use demo buttons or create an account.';
+    errEl.style.display = 'block';
+  }
+}
+
+function handleCustomerRegister() {
+  const full_name = document.getElementById('regFullName').value.trim();
+  const email     = document.getElementById('regEmail').value.trim().toLowerCase();
+  const password  = document.getElementById('regPassword').value.trim();
+  const phone     = document.getElementById('regPhone').value.trim();
+  const company   = document.getElementById('regCompany').value.trim();
+  const address   = document.getElementById('regAddress').value.trim();
+  const errEl     = document.getElementById('regError');
+
+  if (!full_name || !email || !password) {
+    errEl.textContent = 'Name, email, and password are required.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  if (password.length < 5) {
+    errEl.textContent = 'Password must be at least 5 characters.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const customers = getCustomersDB();
+  if (customers.some(c => c.email.toLowerCase() === email)) {
+    errEl.textContent = 'An account with this email already exists. Please log in.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const newCust = {
+    customer_id: 'cust-' + Math.floor(1000 + Math.random() * 9000),
+    full_name,
+    email,
+    password_hash: password,
+    phone,
+    company,
+    country: address,
+    address,
+    created_at: new Date().toISOString()
+  };
+
+  saveCustomerDB(newCust);
+  localStorage.setItem(DB_KEY_AUTH, JSON.stringify(newCust));
+  closeAuthModal();
+  updateAuthUI();
+  showToast(`Account created successfully! Welcome, ${full_name}! 🎉`);
+}
+
+function customerLogout() {
+  localStorage.removeItem(DB_KEY_AUTH);
+  document.getElementById('userDropdownMenu').classList.remove('active');
+  updateAuthUI();
+  showToast('You have been signed out.');
+}
+
+function toggleUserDropdown() {
+  const menu = document.getElementById('userDropdownMenu');
+  menu.classList.toggle('active');
+}
+
+document.addEventListener('click', (e) => {
+  const btn = document.getElementById('userBadgeBtn');
+  const menu = document.getElementById('userDropdownMenu');
+  if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove('active');
+  }
+});
+
+function openProfileModal() {
+  document.getElementById('userDropdownMenu').classList.remove('active');
+  const cust = getCurrentCustomer();
+  if (!cust) return;
+
+  const content = document.getElementById('profileContent');
+  content.innerHTML = `
+    <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:20px;">
+      <div style="font-size:20px;font-weight:800;color:var(--rose-light);">${cust.full_name}</div>
+      <div style="color:var(--text-muted);font-size:13px;margin-bottom:14px;">${cust.company || 'Direct Buyer'}</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin-bottom:14px;">
+      <p><b>Email:</b> ${cust.email}</p>
+      <p><b>Phone / WhatsApp:</b> ${cust.phone || 'Not specified'}</p>
+      <p><b>Delivery Port / Address:</b> ${cust.address || 'Standard CIF quote'}</p>
+      <p><b>Member Since:</b> ${new Date(cust.created_at).toLocaleDateString()}</p>
+    </div>
+  `;
+  document.getElementById('profileModal').classList.remove('hidden');
+}
+
+function closeProfileModal() {
+  document.getElementById('profileModal').classList.add('hidden');
+}
+
+// ==========================================
+// 4. CURRENCY CONVERTER & PRICING
+// ==========================================
+function formatPrice(usdAmount) {
+  const rateObj = CURRENCY_RATES[currentCurrency] || CURRENCY_RATES.USD;
+  const converted = Math.round(usdAmount * rateObj.rate);
+  return `${rateObj.symbol}${converted.toLocaleString()} ${currentCurrency}`;
+}
+
+const curSel = document.getElementById('currencySelector');
+curSel.value = currentCurrency;
+curSel.addEventListener('change', (e) => {
+  currentCurrency = e.target.value;
+  localStorage.setItem(DB_KEY_CURRENCY, currentCurrency);
+  renderProductCatalog();
+  calculateOrderTotal();
+});
+
+// ==========================================
+// 5. PRODUCT CATALOG & ORDERING SYSTEM
+// ==========================================
+function renderProductCatalog() {
+  const grid = document.getElementById('productGrid');
+  const products = getProductsDB();
+
+  grid.innerHTML = products.map(p => `
+    <div class="product-card" data-cat="${p.cat}">
+      <div class="product-thumb">
+        ${p.icon}
+        <span class="product-badge">${p.badge}</span>
+        <span class="product-price-pill">${formatPrice(p.usd_price_per_mt)} / MT</span>
+      </div>
+      <div class="product-body">
+        <h4>${p.name}</h4>
+        <p>${p.desc}</p>
+        <div class="product-specs">
+          <span>Spec: <b>${p.mesh}</b></span>
+          <span>Pkg: <b>${p.pkg}</b></span>
+        </div>
+        <div class="product-btn-group">
+          <button class="product-order-btn" onclick="openOrderModal('${p.id}')">
+            <span>⚡ Order Now</span>
+          </button>
+          <button class="product-rfq-btn" onclick="selectProductForRFQ('${p.name}')">
+            <span>📋 Bulk RFQ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Filter tabs
+document.querySelectorAll('.catalog-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.catalog-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.category;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
     });
   });
 });
 
-// RFQ DYNAMIC SUMMARY
+let selectedOrderProduct = null;
+
+function openOrderModal(prodId) {
+  const products = getProductsDB();
+  selectedOrderProduct = products.find(p => p.id === prodId) || products[0];
+
+  document.getElementById('orderModalIcon').textContent = selectedOrderProduct.icon;
+  document.getElementById('orderModalProdName').textContent = selectedOrderProduct.name;
+  document.getElementById('orderModalProdSpec').textContent = `Granulometry: ${selectedOrderProduct.mesh} • ${selectedOrderProduct.pkg}`;
+  document.getElementById('orderModalUnitPrice').textContent = `${formatPrice(selectedOrderProduct.usd_price_per_mt)} / MT`;
+
+  // Pre-fill user data if logged in
+  const cust = getCurrentCustomer();
+  if (cust) {
+    document.getElementById('orderCustomerName').value = cust.full_name || '';
+    document.getElementById('orderCustomerEmail').value = cust.email || '';
+    document.getElementById('orderCustomerPhone').value = cust.phone || '';
+    document.getElementById('orderCustomerDestination').value = cust.address || '';
+  }
+
+  calculateOrderTotal();
+  document.getElementById('orderError').style.display = 'none';
+  document.getElementById('orderModal').classList.remove('hidden');
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.add('hidden');
+}
+
+function calculateOrderTotal() {
+  if (!selectedOrderProduct) return;
+  const qty = parseFloat(document.getElementById('orderQty').value) || 1;
+  const batchUnit = parseFloat(document.getElementById('orderBatchUnit').value) || 1;
+  const totalMT = qty * batchUnit;
+  const usdTotal = Math.round(totalMT * selectedOrderProduct.usd_price_per_mt);
+  document.getElementById('orderModalTotalDisplay').textContent = formatPrice(usdTotal);
+}
+
+let lastCreatedOrder = null;
+
+function submitCustomerOrder() {
+  const name  = document.getElementById('orderCustomerName').value.trim();
+  const email = document.getElementById('orderCustomerEmail').value.trim();
+  const phone = document.getElementById('orderCustomerPhone').value.trim();
+  const dest  = document.getElementById('orderCustomerDestination').value.trim();
+  const pkg   = document.getElementById('orderPackaging').value;
+  const notes = document.getElementById('orderNotes').value.trim();
+  const qty   = parseFloat(document.getElementById('orderQty').value) || 1;
+  const batch = parseFloat(document.getElementById('orderBatchUnit').value) || 1;
+  const errEl = document.getElementById('orderError');
+
+  if (!name || !email || !phone || !dest) {
+    errEl.textContent = 'Please fill in Name, Email, Phone, and Delivery Destination.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const orderRef = 'ORD-PK-2026-' + Math.floor(1000 + Math.random() * 9000);
+  const totalMT = qty * batch;
+  const usdAmount = Math.round(totalMT * selectedOrderProduct.usd_price_per_mt);
+
+  const orderObj = {
+    id: 'ord_' + Date.now(),
+    order_ref: orderRef,
+    customer_id: currentCustomer ? currentCustomer.customer_id : 'guest',
+    customer_name: name,
+    customer_email: email,
+    customer_phone: phone,
+    product_id: selectedOrderProduct.id,
+    product_name: selectedOrderProduct.name,
+    quantity: `${totalMT} MT (${qty}x batch)`,
+    packaging: pkg,
+    unit_price: selectedOrderProduct.usd_price_per_mt,
+    total_amount: usdAmount,
+    currency: currentCurrency,
+    destination: dest,
+    notes,
+    status: 'pending',
+    created_at: new Date().toISOString()
+  };
+
+  saveOrderDB(orderObj);
+  lastCreatedOrder = orderObj;
+
+  // Auto-register customer if not existing
+  const allCust = getCustomersDB();
+  if (!allCust.some(c => c.email.toLowerCase() === email.toLowerCase())) {
+    const newCust = {
+      customer_id: 'cust-' + Math.floor(1000 + Math.random() * 9000),
+      full_name: name,
+      email: email,
+      password_hash: '123456',
+      phone: phone,
+      company: 'Buyer',
+      country: dest,
+      address: dest,
+      created_at: new Date().toISOString()
+    };
+    saveCustomerDB(newCust);
+    if (!currentCustomer) {
+      localStorage.setItem(DB_KEY_AUTH, JSON.stringify(newCust));
+      updateAuthUI();
+    }
+  }
+
+  closeOrderModal();
+
+  // Show Success Confirmation
+  document.getElementById('successOrderRef').textContent = orderRef;
+  document.getElementById('successOrderAmount').textContent = `Product: ${selectedOrderProduct.name} • Total: ${formatPrice(usdAmount)}`;
+  document.getElementById('orderSuccessModal').classList.remove('hidden');
+}
+
+function closeOrderSuccessModal() {
+  document.getElementById('orderSuccessModal').classList.add('hidden');
+}
+
+function openOrderWhatsApp() {
+  if (!lastCreatedOrder) return;
+  const msg = encodeURIComponent(
+    `🇵🇰 *Khewra Crystals Export Order Dispatch*\n\n` +
+    `🔖 *Order Ref:* ${lastCreatedOrder.order_ref}\n` +
+    `👤 *Customer:* ${lastCreatedOrder.customer_name}\n` +
+    `🧂 *Product:* ${lastCreatedOrder.product_name}\n` +
+    `📦 *Quantity:* ${lastCreatedOrder.quantity}\n` +
+    `💼 *Packaging:* ${lastCreatedOrder.packaging}\n` +
+    `🚢 *Destination:* ${lastCreatedOrder.destination}\n` +
+    `💰 *Estimated Total:* $${lastCreatedOrder.total_amount} USD\n\n` +
+    `_Order saved in factory database. Please acknowledge._`
+  );
+  window.open(`https://api.whatsapp.com/send?phone=923001234567&text=${msg}`, '_blank');
+}
+
+// ==========================================
+// 6. CUSTOMER "MY ORDERS & RFQS" DASHBOARD
+// ==========================================
+function openMyOrdersModal() {
+  document.getElementById('userDropdownMenu').classList.remove('active');
+  const cust = getCurrentCustomer();
+  if (!cust) {
+    openAuthModal('login');
+    return;
+  }
+
+  document.getElementById('myOrdersCustomerLabel').textContent = `Orders & RFQs for ${cust.email}`;
+  const orders = getOrdersDB().filter(o => (o.customer_email || '').toLowerCase() === cust.email.toLowerCase());
+  const rfqs   = getInquiriesDB().filter(i => (i.email || '').toLowerCase() === cust.email.toLowerCase());
+  const tbody  = document.getElementById('myOrdersTableBody');
+
+  if (!orders.length && !rfqs.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text-muted);">No orders or RFQs placed under this account yet.</td></tr>`;
+  } else {
+    let rowsHtml = '';
+    orders.forEach(o => {
+      rowsHtml += `
+        <tr>
+          <td><b style="color:var(--rose-mid);">${o.order_ref}</b><br><small style="color:var(--text-muted);">${new Date(o.created_at).toLocaleDateString()}</small></td>
+          <td><span class="status-badge" style="background:rgba(244,114,182,0.15);color:var(--rose-light);">Direct Order</span></td>
+          <td><b>${o.product_name}</b><br><small style="color:var(--text-muted);">${o.quantity}</small></td>
+          <td><b style="color:#34d399;">$${o.total_amount} USD</b></td>
+          <td><span class="status-badge ${o.status}">${o.status.toUpperCase()}</span></td>
+          <td>
+            <button class="nav-pill" style="padding:4px 8px;font-size:11px;" onclick="trackDirectRef('${o.order_ref}')">📍 Track</button>
+          </td>
+        </tr>
+      `;
+    });
+    rfqs.forEach(r => {
+      rowsHtml += `
+        <tr>
+          <td><b style="color:var(--rose-mid);">${r.reference_no}</b><br><small style="color:var(--text-muted);">${new Date(r.created_at).toLocaleDateString()}</small></td>
+          <td><span class="status-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">Export RFQ</span></td>
+          <td><b>${r.product_name}</b><br><small style="color:var(--text-muted);">${r.volume}</small></td>
+          <td><i>Quoted CIF</i></td>
+          <td><span class="status-badge ${r.status}">${r.status.toUpperCase()}</span></td>
+          <td>
+            <button class="nav-pill" style="padding:4px 8px;font-size:11px;" onclick="trackDirectRef('${r.reference_no}')">📍 Track</button>
+          </td>
+        </tr>
+      `;
+    });
+    tbody.innerHTML = rowsHtml;
+  }
+
+  document.getElementById('myOrdersModal').classList.remove('hidden');
+}
+
+function closeMyOrdersModal() {
+  document.getElementById('myOrdersModal').classList.add('hidden');
+}
+
+// ==========================================
+// 7. ORDER TRACKING LOGIC
+// ==========================================
+function openTrackOrderModal() {
+  document.getElementById('trackOrderModal').classList.remove('hidden');
+}
+
+function closeTrackOrderModal() {
+  document.getElementById('trackOrderModal').classList.add('hidden');
+}
+
+function trackDirectRef(ref) {
+  closeMyOrdersModal();
+  openTrackOrderModal();
+  document.getElementById('trackInputRef').value = ref;
+  executeTrackOrder();
+}
+
+function executeTrackOrder() {
+  const ref = document.getElementById('trackInputRef').value.trim().toUpperCase();
+  if (!ref) {
+    alert("Please enter a reference number.");
+    return;
+  }
+
+  const orders = getOrdersDB();
+  const rfqs = getInquiriesDB();
+  const matchOrder = orders.find(o => (o.order_ref || '').toUpperCase() === ref);
+  const matchRfq   = rfqs.find(r => (r.reference_no || '').toUpperCase() === ref);
+
+  const resultBox = document.getElementById('trackingResultBox');
+  if (!matchOrder && !matchRfq) {
+    alert(`No order or RFQ found matching "${ref}". Please double check your reference number.`);
+    resultBox.style.display = 'none';
+    return;
+  }
+
+  resultBox.style.display = 'block';
+  const item = matchOrder || matchRfq;
+  const isOrder = !!matchOrder;
+
+  document.getElementById('trackRefDisplay').textContent = isOrder ? item.order_ref : item.reference_no;
+  document.getElementById('trackStatusBadge').textContent = (item.status || 'pending').toUpperCase();
+  document.getElementById('trackStatusBadge').className = `status-badge ${item.status || 'pending'}`;
+  document.getElementById('trackDetailsDisplay').textContent = `Item: ${item.product_name} • Destination: ${item.destination || item.destination_port} • Date: ${new Date(item.created_at).toLocaleDateString()}`;
+
+  // Update tracking steps
+  const status = (item.status || 'pending').toLowerCase();
+  const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+  steps.forEach(s => {
+    document.getElementById(s).className = 'tracking-step';
+  });
+
+  document.getElementById('step1').classList.add('done');
+  if (['confirmed', 'in_review', 'quoted', 'in_production', 'shipped', 'delivered', 'deal_won'].includes(status)) {
+    document.getElementById('step2').classList.add('done');
+  }
+  if (['in_production', 'shipped', 'delivered', 'deal_won'].includes(status)) {
+    document.getElementById('step3').classList.add('done');
+  }
+  if (['shipped', 'delivered', 'deal_won'].includes(status)) {
+    document.getElementById('step4').classList.add('done');
+  }
+  if (['delivered'].includes(status)) {
+    document.getElementById('step5').classList.add('done');
+  }
+}
+
+// ==========================================
+// 8. WHOLESALE RFQ SUBMISSION
+// ==========================================
 const pSelect = document.getElementById('rfqProduct');
 const vSelect = document.getElementById('rfqVolume');
 const pkgSelect = document.getElementById('rfqPackaging');
@@ -1537,7 +3191,7 @@ function updateRFQSummary() {
   document.getElementById('sumProduct').textContent = pSelect.value.split('(')[0].trim();
   document.getElementById('sumVolume').textContent = vSelect.value.split('(')[0].trim();
   document.getElementById('sumPackaging').textContent = pkgSelect.value.split('(')[0].trim();
-  document.getElementById('sumPort').textContent = destInput.value.trim() || 'Port Specified in RFQ';
+  document.getElementById('sumPort').textContent = destInput.value.trim() || 'Direct Quote';
 }
 
 [pSelect, vSelect, pkgSelect, destInput].forEach(el => {
@@ -1546,9 +3200,9 @@ function updateRFQSummary() {
 });
 
 function selectProductForRFQ(prodName) {
-  for (let option of pSelect.options) {
-    if (option.value.includes(prodName)) {
-      pSelect.value = option.value;
+  for (let opt of pSelect.options) {
+    if (opt.value.includes(prodName)) {
+      pSelect.value = opt.value;
       break;
     }
   }
@@ -1556,22 +3210,102 @@ function selectProductForRFQ(prodName) {
   document.getElementById('export').scrollIntoView({ behavior: 'smooth' });
 }
 
+let lastCreatedRFQRef = '';
+
+function submitOfficialRFQ() {
+  const buyer_name = document.getElementById('rfqName').value.trim();
+  const company_name = document.getElementById('rfqCompany').value.trim();
+  const email = document.getElementById('rfqEmail').value.trim();
+  const phone_whatsapp = document.getElementById('rfqPhone').value.trim();
+  const destination_port = destInput.value.trim();
+  const special_notes = document.getElementById('rfqNotes').value.trim();
+
+  if (!buyer_name || !company_name || !email || !destination_port) {
+    alert("Please fill in your Name, Company, Email, and Destination Port.");
+    return;
+  }
+
+  const randomRef = 'RFQ-PK-2026-' + Math.floor(1000 + Math.random() * 9000);
+  lastCreatedRFQRef = randomRef;
+
+  const inquiryObj = {
+    id: 'inq_' + Date.now(),
+    reference_no: randomRef,
+    buyer_name,
+    company_name,
+    email,
+    phone_whatsapp,
+    product_name: pSelect.value,
+    volume: vSelect.value,
+    packaging: pkgSelect.value,
+    destination_port,
+    special_notes,
+    status: 'new',
+    created_at: new Date().toISOString()
+  };
+
+  saveInquiryDB(inquiryObj);
+
+  // Auto-register customer if not existing
+  const allCust = getCustomersDB();
+  if (!allCust.some(c => c.email.toLowerCase() === email.toLowerCase())) {
+    const newCust = {
+      customer_id: 'cust-' + Math.floor(1000 + Math.random() * 9000),
+      full_name: buyer_name,
+      email: email,
+      password_hash: '123456',
+      phone: phone_whatsapp,
+      company: company_name,
+      country: destination_port,
+      address: destination_port,
+      created_at: new Date().toISOString()
+    };
+    saveCustomerDB(newCust);
+    if (!currentCustomer) {
+      localStorage.setItem(DB_KEY_AUTH, JSON.stringify(newCust));
+      updateAuthUI();
+    }
+  }
+
+  document.getElementById('modalRefNo').textContent = randomRef;
+  document.getElementById('rfqSuccessModal').classList.remove('hidden');
+
+  // Reset inputs
+  document.getElementById('rfqName').value = '';
+  document.getElementById('rfqCompany').value = '';
+  document.getElementById('rfqEmail').value = '';
+  document.getElementById('rfqPhone').value = '';
+  destInput.value = '';
+  document.getElementById('rfqNotes').value = '';
+}
+
+function closeRFQSuccessModal() {
+  document.getElementById('rfqSuccessModal').classList.add('hidden');
+}
+
+function openWhatsAppForRef() {
+  const msg = encodeURIComponent(`Hello Khewra Crystals Export Desk. I submitted RFQ Reference: ${lastCreatedRFQRef}. Please confirm receipt.`);
+  window.open(`https://api.whatsapp.com/send?phone=923001234567&text=${msg}`, '_blank');
+  closeRFQSuccessModal();
+}
+
 function generateRFQMessage() {
   const prod = pSelect.value;
   const vol = vSelect.value;
   const pkg = pkgSelect.value;
   const name = document.getElementById('rfqName').value.trim() || 'Valued Buyer';
-  const dest = destInput.value.trim() || 'International Destination Port';
-  const notes = document.getElementById('rfqNotes').value.trim() || 'Standard commercial export inquiry';
+  const company = document.getElementById('rfqCompany').value.trim() || 'Import Business';
+  const dest = destInput.value.trim() || 'Destination Port';
+  const notes = document.getElementById('rfqNotes').value.trim() || 'Official export quotation request';
 
   return `🇵🇰 *Himalayan Pink Salt Export Inquiry (Khewra, Pakistan)*\n\n` +
-         `👤 *Buyer / Company:* ${name}\n` +
+         `👤 *Buyer:* ${name} (${company})\n` +
          `🧂 *Product:* ${prod}\n` +
          `📦 *Volume:* ${vol}\n` +
          `💼 *Packaging:* ${pkg}\n` +
          `🚢 *Target Port:* ${dest}\n` +
          `📝 *Notes:* ${notes}\n\n` +
-         `_Inquiry generated via Khewra Crystals Portal_`;
+         `_Inquiry registered in factory export database_`;
 }
 
 function submitRFQWhatsApp() {
@@ -1582,11 +3316,314 @@ function submitRFQWhatsApp() {
 function copyRFQText() {
   const text = generateRFQMessage();
   navigator.clipboard.writeText(text).then(() => {
-    const toast = document.getElementById('toast');
-    toast.style.display = 'block';
-    setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    showToast("RFQ Text Copied to Clipboard!");
   });
 }
+
+// ==========================================
+// 9. ADMIN PORTAL & DATABASE CONTROL
+// ==========================================
+const ADMIN_PIN = "1234";
+
+function openAdminModal() {
+  document.getElementById('adminPinModal').classList.remove('hidden');
+  document.getElementById('adminPinInput').value = '';
+  document.getElementById('adminPinError').style.display = 'none';
+  document.getElementById('adminPinInput').focus();
+}
+document.getElementById('openAdminPortalBtn').addEventListener('click', openAdminModal);
+
+function closeAdminPinModal() {
+  document.getElementById('adminPinModal').classList.add('hidden');
+}
+
+function checkAdminPin() {
+  const pin = document.getElementById('adminPinInput').value.trim();
+  if (pin === ADMIN_PIN) {
+    closeAdminPinModal();
+    renderAdminPortal();
+    document.getElementById('adminPortalModal').classList.remove('hidden');
+  } else {
+    document.getElementById('adminPinError').style.display = 'block';
+  }
+}
+
+document.getElementById('adminPinInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkAdminPin();
+});
+
+function closeAdminPortal() {
+  document.getElementById('adminPortalModal').classList.add('hidden');
+}
+
+function switchAdminTab(tab) {
+  const tabs = ['orders', 'rfqs', 'customers', 'db'];
+  tabs.forEach(t => {
+    document.getElementById(`adminTab${t.charAt(0).toUpperCase() + t.slice(1)}Btn`).classList.toggle('active', t === tab);
+    document.getElementById(`adminView${t.charAt(0).toUpperCase() + t.slice(1)}`).style.display = t === tab ? 'block' : 'none';
+  });
+}
+
+function renderAdminPortal() {
+  const orders    = getOrdersDB();
+  const inquiries = getInquiriesDB();
+  const customers = getCustomersDB();
+
+  // Metrics
+  document.getElementById('adminTotalOrders').textContent = orders.length;
+  document.getElementById('adminTotalRFQs').textContent = inquiries.length;
+  document.getElementById('adminTotalCustomers').textContent = customers.length;
+  const completed = orders.filter(o => o.status === 'delivered').length + inquiries.filter(i => i.status === 'deal_won').length;
+  document.getElementById('adminTotalCompleted').textContent = completed;
+
+  // 1. Render Orders Table
+  const ordersTbody = document.getElementById('adminOrdersTableBody');
+  if (!orders.length) {
+    ordersTbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">No customer orders yet.</td></tr>`;
+  } else {
+    ordersTbody.innerHTML = orders.map(o => `
+      <tr>
+        <td>
+          <b style="color:var(--rose-mid);">${o.order_ref}</b>
+          <div style="font-size:11px;color:var(--text-muted);">${new Date(o.created_at).toLocaleDateString()}</div>
+        </td>
+        <td>
+          <div style="font-weight:700;">${o.customer_name}</div>
+          <div style="font-size:11px;color:var(--rose-light);">${o.customer_email}</div>
+          <div style="font-size:11px;color:var(--text-muted);">${o.customer_phone}</div>
+        </td>
+        <td>
+          <div style="font-weight:600;font-size:13px;">${o.product_name}</div>
+          <div style="font-size:11px;color:var(--text-muted);">${o.quantity} • ${o.packaging}</div>
+        </td>
+        <td>
+          <b style="color:#34d399;">$${o.total_amount} USD</b>
+          <div style="font-size:11px;color:var(--text-muted);">${o.destination}</div>
+        </td>
+        <td>
+          <select onchange="updateOrderStatusDB('${o.order_ref}', this.value); renderAdminPortal();" style="padding:4px 8px;font-size:11px;border-radius:8px;background:#1a101f;color:var(--salt-white);border:1px solid var(--border);">
+            <option value="pending" ${o.status === 'pending' ? 'selected' : ''}>🔵 Pending</option>
+            <option value="confirmed" ${o.status === 'confirmed' ? 'selected' : ''}>🟡 Confirmed</option>
+            <option value="in_production" ${o.status === 'in_production' ? 'selected' : ''}>🟣 In Production</option>
+            <option value="shipped" ${o.status === 'shipped' ? 'selected' : ''}>🚢 Shipped</option>
+            <option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>🟢 Delivered</option>
+            <option value="cancelled" ${o.status === 'cancelled' ? 'selected' : ''}>⚪ Cancelled</option>
+          </select>
+        </td>
+        <td>
+          <button onclick="deleteOrderAdmin('${o.order_ref}')" style="background:transparent;border:none;cursor:pointer;font-size:15px;color:var(--rose-deep);" title="Delete Order">🗑️</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // 2. Render Inquiries Table
+  const inqTbody = document.getElementById('adminInquiriesTableBody');
+  if (!inquiries.length) {
+    inqTbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">No inquiries found.</td></tr>`;
+  } else {
+    inqTbody.innerHTML = inquiries.map(inq => `
+      <tr>
+        <td>
+          <b style="color:var(--rose-mid);">${inq.reference_no}</b>
+          <div style="font-size:11px;color:var(--text-muted);">${new Date(inq.created_at).toLocaleDateString()}</div>
+        </td>
+        <td>
+          <div style="font-weight:700;">${inq.buyer_name}</div>
+          <div style="font-size:12px;color:var(--text-muted);">${inq.company_name}</div>
+          <div style="font-size:11px;color:var(--rose-light);">${inq.email}</div>
+        </td>
+        <td>
+          <div style="font-weight:600;font-size:13px;">${inq.product_name}</div>
+          <div style="font-size:11px;color:var(--text-muted);">${inq.volume} • ${inq.packaging}</div>
+        </td>
+        <td>
+          <div style="font-size:13px;">${inq.destination_port}</div>
+        </td>
+        <td>
+          <select onchange="updateInquiryStatusDB('${inq.reference_no}', this.value); renderAdminPortal();" style="padding:4px 8px;font-size:11px;border-radius:8px;background:#1a101f;color:var(--salt-white);border:1px solid var(--border);">
+            <option value="new" ${inq.status === 'new' ? 'selected' : ''}>🔵 New</option>
+            <option value="in_review" ${inq.status === 'in_review' ? 'selected' : ''}>🟡 Reviewing</option>
+            <option value="quoted" ${inq.status === 'quoted' ? 'selected' : ''}>🟠 Quoted</option>
+            <option value="deal_won" ${inq.status === 'deal_won' ? 'selected' : ''}>🟢 Deal Won</option>
+            <option value="archived" ${inq.status === 'archived' ? 'selected' : ''}>⚪ Archived</option>
+          </select>
+        </td>
+        <td>
+          <button onclick="deleteInquiryAdmin('${inq.reference_no}')" style="background:transparent;border:none;cursor:pointer;font-size:15px;color:var(--rose-deep);" title="Delete Inquiry">🗑️</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // 3. Render Customers Table
+  const custTbody = document.getElementById('adminCustomersTableBody');
+  if (!customers.length) {
+    custTbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">No registered customers yet.</td></tr>`;
+  } else {
+    custTbody.innerHTML = customers.map(c => `
+      <tr>
+        <td><b>${c.full_name}</b><br><small style="color:var(--text-muted);">${c.customer_id}</small></td>
+        <td><a href="mailto:${c.email}" style="color:var(--rose-light);">${c.email}</a></td>
+        <td>${c.phone || '-'}</td>
+        <td>${c.company || '-'}</td>
+        <td>${c.country || '-'}</td>
+        <td>${new Date(c.created_at).toLocaleDateString()}</td>
+      </tr>
+    `).join('');
+  }
+
+  // Load Cloud DB input value
+  document.getElementById('firebaseDbUrlInput').value = localStorage.getItem(DB_KEY_FIREBASE) || '';
+}
+
+function deleteOrderAdmin(orderRef) {
+  if (confirm(`Delete Order ${orderRef}?`)) {
+    let orders = getOrdersDB();
+    orders = orders.filter(o => o.order_ref !== orderRef && o.id !== orderRef);
+    localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(orders));
+    renderAdminPortal();
+  }
+}
+
+function deleteInquiryAdmin(refNo) {
+  if (confirm(`Delete Inquiry ${refNo}?`)) {
+    let inquiries = getInquiriesDB();
+    inquiries = inquiries.filter(i => i.reference_no !== refNo && i.id !== refNo);
+    localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(inquiries));
+    renderAdminPortal();
+  }
+}
+
+function seedSampleInquiry() {
+  const sample = {
+    id: 'inq_' + Date.now(),
+    reference_no: 'RFQ-PK-2026-' + Math.floor(1000 + Math.random() * 9000),
+    buyer_name: 'Marcus Vance',
+    company_name: 'Nordic Spice Imports',
+    email: 'm.vance@nordicspice.se',
+    phone_whatsapp: '+46 8 123 4567',
+    product_name: 'Fine Table Pink Salt (0.2–0.8mm)',
+    volume: '20ft Container (approx. 24–27 Metric Tons)',
+    packaging: 'Bulk 25kg PP Woven Bags (Food Grade)',
+    destination_port: 'Port of Gothenburg, Sweden',
+    special_notes: 'Looking for prompt CIF shipment.',
+    status: 'new',
+    created_at: new Date().toISOString()
+  };
+  saveInquiryDB(sample);
+  renderAdminPortal();
+  showToast("Sample Lead Added to Database!");
+}
+
+function saveCloudDbConfig() {
+  const url = document.getElementById('firebaseDbUrlInput').value.trim();
+  localStorage.setItem(DB_KEY_FIREBASE, url);
+  showToast(url ? "Firebase Realtime DB Synced! ☁️" : "Using Native Browser Storage 💾");
+}
+
+// Database Export/Import Tools
+function exportOrdersCSV() {
+  const orders = getOrdersDB();
+  if (!orders.length) return alert("No orders recorded yet.");
+  const rows = [["Order Ref", "Customer Name", "Email", "Phone", "Product", "Quantity", "Packaging", "Total USD", "Destination", "Status", "Date"]];
+  orders.forEach(o => {
+    rows.push([
+      `"${o.order_ref}"`, `"${o.customer_name}"`, `"${o.customer_email}"`, `"${o.customer_phone}"`,
+      `"${o.product_name}"`, `"${o.quantity}"`, `"${o.packaging}"`, `"${o.total_amount}"`,
+      `"${o.destination}"`, `"${o.status}"`, `"${o.created_at}"`
+    ]);
+  });
+  downloadCSV(rows, "khewra_customer_orders.csv");
+}
+
+function exportInquiriesCSV() {
+  const inquiries = getInquiriesDB();
+  if (!inquiries.length) return alert("No inquiries recorded yet.");
+  const rows = [["Ref No", "Buyer Name", "Company", "Email", "Phone", "Product", "Volume", "Packaging", "Destination", "Status", "Date"]];
+  inquiries.forEach(i => {
+    rows.push([
+      `"${i.reference_no}"`, `"${i.buyer_name}"`, `"${i.company_name}"`, `"${i.email}"`,
+      `"${i.phone_whatsapp}"`, `"${i.product_name}"`, `"${i.volume}"`, `"${i.packaging}"`,
+      `"${i.destination_port}"`, `"${i.status}"`, `"${i.created_at}"`
+    ]);
+  });
+  downloadCSV(rows, "khewra_wholesale_rfqs.csv");
+}
+
+function exportCustomersCSV() {
+  const customers = getCustomersDB();
+  if (!customers.length) return alert("No registered customers.");
+  const rows = [["Customer ID", "Name", "Email", "Phone", "Company", "Address", "Date"]];
+  customers.forEach(c => {
+    rows.push([`"${c.customer_id}"`, `"${c.full_name}"`, `"${c.email}"`, `"${c.phone}"`, `"${c.company}"`, `"${c.address}"`, `"${c.created_at}"`]);
+  });
+  downloadCSV(rows, "khewra_customer_directory.csv");
+}
+
+function downloadCSV(rows, filename) {
+  const csv = "data:text/csv;charset=utf-8," + rows.map(r => r.join(",")).join("\n");
+  const link = document.createElement("a");
+  link.setAttribute("href", encodeURI(csv));
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function exportFullDatabaseJSON() {
+  const fullBackup = {
+    customers: getCustomersDB(),
+    orders: getOrdersDB(),
+    inquiries: getInquiriesDB(),
+    products: getProductsDB(),
+    exported_at: new Date().toISOString()
+  };
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fullBackup, null, 2));
+  const link = document.createElement("a");
+  link.setAttribute("href", dataStr);
+  link.setAttribute("download", `khewra_database_backup_${new Date().toISOString().split('T')[0]}.json`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function importFullDatabaseJSON(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const data = JSON.parse(evt.target.result);
+      if (data.customers) localStorage.setItem(DB_KEY_CUSTOMERS, JSON.stringify(data.customers));
+      if (data.orders) localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(data.orders));
+      if (data.inquiries) localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(data.inquiries));
+      if (data.products) localStorage.setItem(DB_KEY_PRODUCTS, JSON.stringify(data.products));
+      renderAdminPortal();
+      renderProductCatalog();
+      updateAuthUI();
+      showToast("Database successfully restored from JSON!");
+    } catch(err) {
+      alert("Invalid JSON backup file.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Toast Notification Helper
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 3000);
+}
+
+// ==========================================
+// 10. INITIALIZATION
+// ==========================================
+renderProductCatalog();
+updateRFQSummary();
+updateAuthUI();
 </script>
 </body>
 </html>
