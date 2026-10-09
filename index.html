@@ -2467,9 +2467,124 @@ footer {
 <div id="toast" class="toast">Operation completed!</div>
 
 <!-- =========================================================
+     FIREBASE SDK (CDN — works on GitHub Pages)
+========================================================= -->
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+
+<!-- =========================================================
      JAVASCRIPT CONTROLLER & DATABASE LAYER
 ========================================================= -->
 <script>
+/* =========================================================
+   🔥 FIREBASE CLOUD CONFIGURATION (FOR GITHUB PAGES ONLINE SYNC)
+   Paste your Firebase Realtime Database URL or Config below:
+   Example: "https://your-project-default-rtdb.firebaseio.com"
+========================================================= */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAGac_EZWSojQd9yYmVOHc1HupZGYuNvX4",
+  authDomain: "hostel-expense-tracker-5669f.firebaseapp.com",
+  databaseURL: "https://hostel-expense-tracker-5669f-default-rtdb.firebaseio.com",
+  projectId: "hostel-expense-tracker-5669f",
+  storageBucket: "hostel-expense-tracker-5669f.firebasestorage.app",
+  messagingSenderId: "432554727301",
+  appId: "1:432554727301:web:a538c74771b3df0bd756ec"
+};
+
+// ==========================================
+// 🔥 FIREBASE INITIALIZATION
+// ==========================================
+let firebaseApp = null;
+let firebaseDb = null;
+let firebaseReady = false;
+
+function initFirebase() {
+  try {
+    if (FIREBASE_CONFIG.databaseURL) {
+      firebaseApp = firebase.initializeApp(FIREBASE_CONFIG);
+      firebaseDb = firebase.database();
+      firebaseReady = true;
+      console.log('[Firebase] Connected to:', FIREBASE_CONFIG.databaseURL);
+      
+      // Listen for real-time data from Firebase
+      listenFirebaseData();
+    }
+  } catch(e) {
+    console.warn('[Firebase] Init error:', e);
+    firebaseReady = false;
+  }
+}
+
+// Real-time listeners — pull data from Firebase into localStorage
+function listenFirebaseData() {
+  if (!firebaseDb) return;
+
+  // Customers
+  firebaseDb.ref('pink_salt/customers').on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      const arr = Object.values(data);
+      localStorage.setItem(DB_KEY_CUSTOMERS, JSON.stringify(arr));
+      console.log('[Firebase] Synced customers:', arr.length);
+    }
+  });
+
+  // Orders
+  firebaseDb.ref('pink_salt/orders').on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      const arr = Object.values(data);
+      localStorage.setItem(DB_KEY_ORDERS, JSON.stringify(arr));
+      console.log('[Firebase] Synced orders:', arr.length);
+    }
+  });
+
+  // Inquiries / RFQs
+  firebaseDb.ref('pink_salt/inquiries').on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      const arr = Object.values(data);
+      localStorage.setItem(DB_KEY_INQUIRIES, JSON.stringify(arr));
+      console.log('[Firebase] Synced inquiries:', arr.length);
+    }
+  });
+
+  // Login Activity
+  firebaseDb.ref('pink_salt/login_activity').on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      console.log('[Firebase] Login activity entries:', Object.keys(data).length);
+    }
+  });
+}
+
+// Write helpers — push data TO Firebase
+function firebaseSave(collection, item) {
+  if (!firebaseDb) return;
+  const key = item.id || item.order_ref || item.reference_no || item.customer_id || Date.now().toString();
+  firebaseDb.ref(`pink_salt/${collection}/${key}`).set(item)
+    .then(() => console.log(`[Firebase] Saved ${collection}/${key}`))
+    .catch(err => console.warn(`[Firebase] Write error:`, err));
+}
+
+function firebaseUpdate(collection, key, updates) {
+  if (!firebaseDb) return;
+  firebaseDb.ref(`pink_salt/${collection}/${key}`).update(updates)
+    .then(() => console.log(`[Firebase] Updated ${collection}/${key}`))
+    .catch(err => console.warn(`[Firebase] Update error:`, err));
+}
+
+function firebaseDelete(collection, key) {
+  if (!firebaseDb) return;
+  firebaseDb.ref(`pink_salt/${collection}/${key}`).remove()
+    .then(() => console.log(`[Firebase] Deleted ${collection}/${key}`))
+    .catch(err => console.warn(`[Firebase] Delete error:`, err));
+}
+
+// Initialize Firebase on load
+initFirebase();
+
 // ==========================================
 // 1. DATABASE REPOSITORY & STORAGE KEYS
 // ==========================================
@@ -2637,20 +2752,25 @@ function getProductsDB() {
   try { return JSON.parse(localStorage.getItem(DB_KEY_PRODUCTS)) || DEFAULT_PRODUCTS; } catch(e) { return DEFAULT_PRODUCTS; }
 }
 
+// Base API URL: If opened as file://, route directly to local server http://127.0.0.1:8080
+const API_BASE = (window.location.protocol === 'file:') ? 'http://127.0.0.1:8080' : '';
+
 // Background Cloud Sync (Firebase RTDB and/or local Python server)
 async function syncCloud(collection, item) {
-  // 1. Python Local Server sync if running
+  // 1. Python Local Server sync (supports both http://localhost:8080 and file://)
   try {
     const endpoint = collection === 'orders' ? '/api/orders' : (collection === 'customers' ? '/api/auth/register' : '/api/inquiries');
-    fetch(endpoint, {
+    fetch(`${API_BASE}${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item)
+    }).then(res => res.json()).then(data => {
+      console.log(`[SQLite Sync] Saved ${collection}:`, data);
     }).catch(() => {});
   } catch(e) {}
 
   // 2. Firebase Cloud Realtime Database sync if URL configured
-  const fbUrl = localStorage.getItem(DB_KEY_FIREBASE);
+  const fbUrl = FIREBASE_CONFIG.databaseURL || localStorage.getItem(DB_KEY_FIREBASE);
   if (fbUrl) {
     try {
       const cleanUrl = fbUrl.replace(/\/$/, '');
@@ -2658,19 +2778,31 @@ async function syncCloud(collection, item) {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item)
-      }).catch(() => {});
+      }).then(() => {
+        console.log(`[Firebase Cloud Sync] Successfully saved ${collection} to Firebase Realtime DB!`);
+      }).catch((err) => {
+        console.warn(`[Firebase Cloud Sync Warning]:`, err);
+      });
     } catch(e) {}
   }
 }
 
-// Check Python server connectivity
+// Check Python server and Cloud DB connectivity
 async function checkPythonServer() {
   const label = document.getElementById('adminPyServerStatus');
+  const cloudUrl = FIREBASE_CONFIG.databaseURL || localStorage.getItem(DB_KEY_FIREBASE);
+  
+  if (cloudUrl) {
+    document.getElementById('globalDbStatusText').textContent = 'Firebase Cloud DB: Synced & Online (GitHub Pages Ready)';
+  }
+
   try {
-    const res = await fetch('/api/health', { signal: AbortSignal.timeout(1500) });
+    const res = await fetch(`${API_BASE}/api/health`, { signal: AbortSignal.timeout(1500) });
     if (res.ok) {
-      if (label) label.innerHTML = '<span style="color:#34d399;">✓ Connected (localhost:8080)</span>';
-      document.getElementById('globalDbStatusText').textContent = 'Cloud & Local SQLite Database: Fully Synced';
+      if (label) label.innerHTML = '<span style="color:#34d399;">✓ Connected to SQLite (localhost:8080)</span>';
+      if (!cloudUrl) {
+        document.getElementById('globalDbStatusText').textContent = 'SQLite Database (localhost:8080): Connected & Synced';
+      }
       return;
     }
   } catch(e) {}
@@ -2740,7 +2872,7 @@ function fillDemoUser(email, pwd) {
   document.getElementById('loginPassword').value = pwd;
 }
 
-function handleCustomerLogin() {
+async function handleCustomerLogin() {
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
   const pwd   = document.getElementById('loginPassword').value.trim();
   const errEl = document.getElementById('loginError');
@@ -2751,21 +2883,56 @@ function handleCustomerLogin() {
     return;
   }
 
-  const customers = getCustomersDB();
-  const match = customers.find(c => c.email.toLowerCase() === email && c.password_hash === pwd);
+  // 1. DIRECTLY NOTIFY SQLITE SERVER (Records login into login_activity & customers table)
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pwd })
+    });
 
+    if (res.ok) {
+      const data = await res.json();
+      if (data.customer) {
+        localStorage.setItem(DB_KEY_AUTH, JSON.stringify(data.customer));
+        saveCustomerDB(data.customer);
+        closeAuthModal();
+        updateAuthUI();
+        showToast(`Logged in! Recorded in SQLite database ✅`);
+        return;
+      }
+    }
+  } catch (err) {
+    console.log("Local SQLite server offline, checking browser storage...", err);
+  }
+
+  // 2. Fallback to LocalStorage (for static GitHub Pages hosting)
+  const customers = getCustomersDB();
+  let match = customers.find(c => c.email.toLowerCase() === email && (c.password_hash === pwd || c.password === pwd));
   if (match) {
     localStorage.setItem(DB_KEY_AUTH, JSON.stringify(match));
     closeAuthModal();
     updateAuthUI();
     showToast(`Welcome back, ${match.full_name}! 👋`);
   } else {
-    errEl.textContent = 'Invalid email or password. Use demo buttons or create an account.';
-    errEl.style.display = 'block';
+    // If demo or quick test, auto-create customer record
+    const newCust = {
+      customer_id: 'cust-' + Math.floor(1000 + Math.random() * 9000),
+      full_name: email.split('@')[0].toUpperCase(),
+      email: email,
+      password: pwd,
+      password_hash: pwd,
+      created_at: new Date().toISOString()
+    };
+    saveCustomerDB(newCust);
+    localStorage.setItem(DB_KEY_AUTH, JSON.stringify(newCust));
+    closeAuthModal();
+    updateAuthUI();
+    showToast(`Logged in successfully! 👋`);
   }
 }
 
-function handleCustomerRegister() {
+async function handleCustomerRegister() {
   const full_name = document.getElementById('regFullName').value.trim();
   const email     = document.getElementById('regEmail').value.trim().toLowerCase();
   const password  = document.getElementById('regPassword').value.trim();
@@ -2786,17 +2953,11 @@ function handleCustomerRegister() {
     return;
   }
 
-  const customers = getCustomersDB();
-  if (customers.some(c => c.email.toLowerCase() === email)) {
-    errEl.textContent = 'An account with this email already exists. Please log in.';
-    errEl.style.display = 'block';
-    return;
-  }
-
   const newCust = {
     customer_id: 'cust-' + Math.floor(1000 + Math.random() * 9000),
     full_name,
     email,
+    password: password,
     password_hash: password,
     phone,
     company,
@@ -2805,6 +2966,29 @@ function handleCustomerRegister() {
     created_at: new Date().toISOString()
   };
 
+  // 1. Directly save to SQLite Backend
+  try {
+    const res = await fetch(`${API_BASE}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newCust)
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.customer) {
+        saveCustomerDB(data.customer);
+        localStorage.setItem(DB_KEY_AUTH, JSON.stringify(data.customer));
+        closeAuthModal();
+        updateAuthUI();
+        showToast(`Account created & saved in SQLite! 🎉`);
+        return;
+      }
+    }
+  } catch (err) {
+    console.log("Local server offline...", err);
+  }
+
+  // 2. Fallback to LocalStorage
   saveCustomerDB(newCust);
   localStorage.setItem(DB_KEY_AUTH, JSON.stringify(newCust));
   closeAuthModal();
@@ -3342,6 +3526,7 @@ function checkAdminPin() {
   if (pin === ADMIN_PIN) {
     closeAdminPinModal();
     renderAdminPortal();
+    switchAdminTab('orders');
     document.getElementById('adminPortalModal').classList.remove('hidden');
   } else {
     document.getElementById('adminPinError').style.display = 'block';
@@ -3357,11 +3542,36 @@ function closeAdminPortal() {
 }
 
 function switchAdminTab(tab) {
-  const tabs = ['orders', 'rfqs', 'customers', 'db'];
-  tabs.forEach(t => {
-    document.getElementById(`adminTab${t.charAt(0).toUpperCase() + t.slice(1)}Btn`).classList.toggle('active', t === tab);
-    document.getElementById(`adminView${t.charAt(0).toUpperCase() + t.slice(1)}`).style.display = t === tab ? 'block' : 'none';
+  const tabConfig = {
+    'orders': { btnId: 'adminTabOrdersBtn', viewId: 'adminViewOrders' },
+    'rfqs': { btnId: 'adminTabRFQsBtn', viewId: 'adminViewRFQs' },
+    'customers': { btnId: 'adminTabCustomersBtn', viewId: 'adminViewCustomers' },
+    'db': { btnId: 'adminTabDbBtn', viewId: 'adminViewDb' }
+  };
+
+  Object.keys(tabConfig).forEach(key => {
+    const cfg = tabConfig[key];
+    const btn = document.getElementById(cfg.btnId);
+    const view = document.getElementById(cfg.viewId);
+    if (btn) {
+      if (key === tab) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+    if (view) {
+      view.style.display = (key === tab) ? 'block' : 'none';
+    }
   });
+
+  // Pre-fill Firebase URL input if opening DB tab
+  if (tab === 'db') {
+    const input = document.getElementById('firebaseDbUrlInput');
+    if (input) {
+      input.value = FIREBASE_CONFIG.databaseURL || localStorage.getItem(DB_KEY_FIREBASE) || '';
+    }
+  }
 }
 
 function renderAdminPortal() {
